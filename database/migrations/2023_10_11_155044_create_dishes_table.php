@@ -15,6 +15,18 @@ return new class extends Migration
 
             $table->id();
 
+            $table->unsignedBigInteger('restaurant_id');
+
+            $table->foreign('restaurant_id')
+
+                    ->references('id')
+
+                    ->on('resturants')
+
+                    ->onUpdate('cascade')
+
+                    ->onDelete('cascade');
+
             $table->string('name', 70);
 
             $table->text('ingredients');
