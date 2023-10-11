@@ -21,7 +21,7 @@ return new class extends Migration
 
                     ->references('id')
 
-                    ->on('resturants')
+                    ->on('restaurants')
 
                     ->onUpdate('cascade')
 
@@ -37,7 +37,7 @@ return new class extends Migration
             
             $table->boolean('available')->default(true);
             
-            $table->sring('image', 2048)->nullable();
+            $table->string('image', 2048)->nullable();
 
             $table->timestamps();
 
