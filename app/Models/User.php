@@ -42,4 +42,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+}
+
+class User extends Model {
+
+    use HasFactory;
+
+    public function restaurant(){
+
+        return $this->hasOne(Restaurant::class);
+
+    }
+
 }
