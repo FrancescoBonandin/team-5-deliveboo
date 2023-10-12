@@ -37,7 +37,7 @@ return new class extends Migration
 
             ->onDelete('cascade');
 
-            $table ->unsignedTinyInteger('quantity');
+            $table ->unsignedTinyInteger('quantity')->default(1);
 
             $table->timestamps();
         });
