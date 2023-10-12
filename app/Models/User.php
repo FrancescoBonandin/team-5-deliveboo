@@ -43,12 +43,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-}
-
-class User extends Model {
-
-    use HasFactory;
-
     public function restaurant(){
 
         return $this->hasOne(Restaurant::class);
@@ -56,3 +50,5 @@ class User extends Model {
     }
 
 }
+
+
