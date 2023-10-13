@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Restaurant;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -34,6 +35,13 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'restaurant_name'=>['required', 'max:255'],
+            'address'=>['required', 'max:255'],
+            'image'=>['nullable','image'],
+            'p_iva'=>['required','max:11'],
+            'categories' => 'nullable|array',
+            'categories.*'=>'exists:categories,id',
+
         ]);
 
         $user = User::create([
@@ -41,6 +49,25 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        $restaurant = Restaurant::Create([
+
+            'restaurant_name'=>$request->restaurant_name,
+            'address'=> $request->address,
+            'image'=>$request->image,
+            'p_iva'=>$request->p_iva,
+
+          
+
+        ]);
+
+        if (isset($request['categories'])) {
+            foreach ($request['categories'] as $categoryId) {
+                                                
+                                                
+                $restaurant->categories()->attach($categoryId);  
+            }
+        }
 
         event(new Registered($user));
 
