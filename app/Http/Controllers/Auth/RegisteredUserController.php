@@ -54,8 +54,9 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $restaurant = Restaurant::Create([
 
+        $restaurant = Restaurant::Create([
+            'user_id'=>$user->id,
             'restaurant_name'=>$request->restaurant_name,
             'address'=> $request->address,
             'image'=>$request->image,
@@ -64,6 +65,7 @@ class RegisteredUserController extends Controller
           
 
         ]);
+
 
         if (isset($request['categories'])) {
             foreach ($request['categories'] as $categoryId) {
