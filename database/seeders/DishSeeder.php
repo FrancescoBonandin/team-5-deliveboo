@@ -94,7 +94,7 @@ class DishSeeder extends Seeder
                 
                 'description' =>  fake()->text(50),
                 
-                'price' =>  fake()->randomFloat(2, 1, 99 ),
+                'price' =>  fake()->randomFloat(2, 1, 50 ),
  
                 'available' => fake()->boolean(),
 

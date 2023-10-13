@@ -30,11 +30,12 @@ class DishOrderSeeder extends Seeder
             $order->dishes()->detach();
         }
 
-        foreach ($orders as $order) {
+        foreach ($orders as $index=> $order) {
 
             // cicla tutti gli ordini
-            
-            foreach ($dishes as $dish) {
+            $total_price=0;
+
+            foreach ($dishes as $i=>$dish) {
 
                 // cicla tutti i piatti
 
@@ -43,13 +44,17 @@ class DishOrderSeeder extends Seeder
                 if(fake()->boolean(60)){
 
                     // se è vero(60% prob), aggiungi all'ordine il singolo piatto CON la singola quantità associata
+                    $multiplier=rand(1, 10);
+                    $order->dishes()->syncWithPivotValues($dish->id, ['quantity' => $multiplier ],false);
 
-                    $order->dishes()->syncWithPivotValues($dish->id, ['quantity' => rand(1, 10)],false);
+
+                    $total_price+=$dish->price*$multiplier;
+
 
                 }
-
+                
             }
-           
+            $order->update(['total_price'=>$total_price]);
         }
 
     }   

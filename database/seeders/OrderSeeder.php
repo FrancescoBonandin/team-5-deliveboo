@@ -25,6 +25,8 @@ class OrderSeeder extends Seeder
 
         });
 
+
+
         for ($i=0; $i < 10; $i++) { 
 
             $randomRestaurant = Restaurant::inRandomOrder()->first();
@@ -43,7 +45,7 @@ class OrderSeeder extends Seeder
 
                 'email' =>  fake()->email(),
 
-                'total_price' =>  fake()->randomFloat(2, 1, 999 ),
+                'total_price' => 0,
                 
             ]);
             

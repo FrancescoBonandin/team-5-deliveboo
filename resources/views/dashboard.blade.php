@@ -7,20 +7,117 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
+
                     <h1 class="text-center text-success">
-                        Sei loggato!
+                        Ciao {{ Auth()->user()->name }}, 
+                        Benvenut* da  {{Auth()->user()->restaurant->restaurant_name}}
                     </h1>
 
+                    <h3>
+                        Questa è la tua dashboard da cui puoi controllare tutti i tuoi piatti e i tuoi ordini
+                    </h3>
+
+
+                {{-- 
                     <h1>
                         {{ Auth()->user()->name }}
                     </h1>
 
                     <h1>
                         {{Auth()->user()->restaurant->restaurant_name}}
-                    </h1>
+                    </h1> --}}
+                    <div class="row">
+                        
+                    </div>
+                 @forelse (Auth()->user()->restaurant->orders as $order)
+                    <div class="card">
 
-                    <br>
-                    La dashboard è una pagina privata (protetta dal middleware)
+                        <div class='card-title row'>
+
+                            <h2 class='col'>
+                                Cliente: {{$order->name}} {{$order->last_name}}
+                            </h2>
+
+                            <h2 class='col'>
+                                Num.Ordine: {{$order->id}}
+                            </h2>
+                         
+                        </div>
+
+                        <div class='card-body'>
+
+                            @forelse ($order->dishes as $dish)
+                                <div class='card'>
+                                    <div class="card-body row">
+
+                                        <div class="col-2">
+                                            <img class="img-fluid" src="{{$dish->image}}" alt="">
+                                        </div>
+
+                                        <div class="col">
+
+                                            <h3>
+
+                                                <span>
+                                                    
+                                                    {{$dish->name}} 
+
+                                                </span>
+                                            
+                                                <span>
+                                                    x {{$dish->pivot->quantity}}
+                                                </span>
+
+                                            </h3>
+
+                                            <h4>
+                                                {{$dish->ingredients}}
+                                            </h4>
+
+                                            <h4>
+                                                {{$dish->description}}
+                                            </h4>
+
+                                            <h4>
+
+                                                Partial Price:
+                                                {{ str_replace('.',',', $dish->price*$dish->pivot->quantity)}}€
+
+                                            </h4>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            @empty
+                            nessun piatto associato
+                            @endforelse
+                            
+                            <div class="row">
+
+                                <h4 class='col '>
+                                    Address:{{$order->address}}
+                                </h4>
+    
+                                <h4 class='col '>
+                                    Total Price:{{str_replace('.',',',$order->total_price)}}€
+                                </h4>
+
+                            </div>
+                            
+                        </div>
+
+                    </div>
+               
+                 @empty
+
+                    <h2>
+                        Nessun ordine   
+                    </h2>
+
+                 @endforelse
+
+
                 </div>
             </div>
         </div>

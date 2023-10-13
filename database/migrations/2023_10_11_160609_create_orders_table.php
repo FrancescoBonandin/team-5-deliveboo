@@ -27,7 +27,7 @@ return new class extends Migration
             
             $table->string('email', 319);
             
-            $table->unsignedDecimal('total_price', 5, 2);
+            $table->unsignedDecimal('total_price', 8, 2);
             
             $table->timestamps();
             
