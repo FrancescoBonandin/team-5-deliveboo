@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DishController;
 use App\Http\Controllers\Admin\OrderController;
 
 /*
@@ -29,5 +30,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+
+Route::resource('dishes', DishController::class)->middleware(['auth', 'verified'])->except(['index']);
+
 Route::get('/orders', [OrderController::class, 'orders'])->name('orders');
+
 require __DIR__.'/auth.php' ;
