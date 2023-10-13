@@ -76,7 +76,6 @@
       
         </div>
 
-
         {{-- restaurant categories --}}
         <div class="mt-3 mb-3">
 
@@ -108,7 +107,7 @@
       
               <label class="btn btn-outline-primary" for="category-{{$category ->id}}">
               
-                {{$category->category}}
+                {{$category->category_name}}
       
               </label>
             
