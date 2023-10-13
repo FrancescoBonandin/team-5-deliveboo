@@ -26,25 +26,29 @@ class DishOrderSeeder extends Seeder
         $dishes = Dish::all();
 
         foreach($orders as $order){
+            // Per ogni ordine cancella i piatti assocciati
             $order->dishes()->detach();
         }
 
         foreach ($orders as $order) {
 
+            // cicla tutti gli ordini
             
             foreach ($dishes as $dish) {
 
+                // cicla tutti i piatti
+
+                
+
                 if(fake()->boolean(60)){
+
+                    // se è vero(60% prob), aggiungi all'ordine il singolo piatto CON la singola quantità associata
 
                     $order->dishes()->syncWithPivotValues($dish->id, ['quantity' => rand(1, 10)],false);
 
                 }
 
             }
-
-            // $order->dishes()->syncWithPivotValues($dishes->random(rand(1,count($dishes)))->pluck('id')->toArray(),['quantity' => rand(1,10)]);
-
-            // $order->dishes()->syncWithPivotValues($dishes,['quantity' => rand(1,10)]);
            
         }
 
