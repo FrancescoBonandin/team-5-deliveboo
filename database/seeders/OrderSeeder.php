@@ -8,6 +8,8 @@ use Illuminate\Database\Seeder;
 
 use Illuminate\Support\Facades\Schema;
 
+use App\Models\Restaurant;
+
 use App\Models\Order;
 
 class OrderSeeder extends Seeder
@@ -25,7 +27,11 @@ class OrderSeeder extends Seeder
 
         for ($i=0; $i < 10; $i++) { 
 
+            $randomRestaurant = Restaurant::inRandomOrder()->first();
+
             Order::create([
+
+                'restaurant_id' => $randomRestaurant->id,
 
                 'name' =>  fake()->firstName(),
 
