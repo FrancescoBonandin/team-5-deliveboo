@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Dish;
 
+// Helpers
+use Illuminate\Support\Facades\Storage;
+
 class DishController extends Controller
 {
     /**
@@ -21,7 +24,7 @@ class DishController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        return view('admin.dishes.create');
     }
 
     /**
@@ -30,13 +33,19 @@ class DishController extends Controller
     public function store(Request $request)
     {
         $data=$request;
+
+        $dishImage = null;
+        if (isset($data['image'])) {
+            $dishImage = Storage::put('uploads/images', $data['image']);
+        }
+
         Dish::create([
             'name'=>$data['name'],
             'ingredients'=>$data['ingredients'],
             'description'=>$data['description'],
             'price'=>$data['price'],
             'available'=>$data['available'],
-            'image'=>$data['image'],
+            'image'=>$dishImage,
             'restaurant_id'=>$data['restaurant_id'],
         ]);
         return redirect()->route('dishes.show');
@@ -47,7 +56,7 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        return view('admin.show', compact('dish'));
+        return view('admin.dishes.show', compact('dish'));
     }
 
     /**
@@ -55,7 +64,7 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        return view('admin.edit', compact('dish'));
+        return view('admin.dishes.edit', compact('dish'));
     }
 
     /**
@@ -64,13 +73,31 @@ class DishController extends Controller
     public function update(Request $request, Dish $dish)
     {
         $data=$request;
-        Dish::create([
+
+        $dishImage = $dish->image;
+        if (isset($data['image'])) {
+            if ($dish->image) {
+                Storage::delete($dish->image);
+            }
+
+            $dishImage = Storage::put('uploads/images', $data['image']);
+        }
+        else if (isset($data['remove_image'])) {
+            if ($dish->image) {
+                Storage::delete($dish->image);
+            }
+
+            $dishImage = null;
+        }
+
+        
+        $dish->update([
             'name'=>$data['name'],
             'ingredients'=>$data['ingredients'],
             'description'=>$data['description'],
             'price'=>$data['price'],
             'available'=>$data['available'],
-            'image'=>$data['image'],
+            'image'=>$dishImage,
             'restaurant_id'=>$data['restaurant_id'],
         ]);
         return redirect()->route('dishes.show', compact('dish'));
@@ -81,6 +108,12 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
+        if ($dish->image) {
+            Storage::delete($dish->image);
+        }
+    
         $dish->delete();
+
+        return redirect()->route('dishes.show');
     }
 }
