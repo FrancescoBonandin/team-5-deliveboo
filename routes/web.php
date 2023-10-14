@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('dishes', DishController::class)->middleware(['auth', 'verified'])->except(['index']);
 });
 
+Route::get('/orders', function(){ return view('orders.restaurant-orders');})->name('orders.view');
+
 
 
 
