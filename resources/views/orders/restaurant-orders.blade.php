@@ -28,84 +28,100 @@
 
                 @foreach (Auth()->user()->restaurant->orders as $order)
 
-                    <div class="card">
+                    <div class="card accordion ">
 
-                        <div class="accordion" id="accordionExample">
-                            <div class="accordion-item">
+                        
+                        <div class="accordion-item">
 
-                                <h2 class="accordion-header" id="headingOne">
+                            <div class="accordion-header" id="headingOne">
 
-                                    <div class='card-title row'>
+                                <div class='card-title rowaccordion-header" id="headingOne'>
 
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        
+                                        <h4 class='col'>
+                                            Cliente: {{$order->name}} {{$order->last_name}}
+                                        </h4>
+                
+                                        <h4 class='col'>
+                                            Num.Ordine: {{$order->id}}
+                                        </h4>
+
+                                    </button>
+                                
+                                </div>
+
+                            </div>
+
+                            <div id="collapseOne" class="accordion-collapse collapse"  data-bs-parent="#accordionExample">
+                                
+
+                                <div class='card-body accordion-body'>
+        
+                                    @forelse ($order->dishes as $dish)
+                                    <div class='card'>
+
+                                        <div class="card-body row">
+            
+                                            <div class="col-2">
+                                                <img class="img-fluid" src="{{$dish->image}}" alt="">
+                                            </div>
+            
+                                            <div class="col">
+            
+                                                <h3>
+        
+                                                    <span>
+                                                    
+                                                        {{$dish->name}} 
+        
+                                                    </span>
                                             
-                                            <h4 class='col'>
-                                                Cliente: {{$order->name}} {{$order->last_name}}
-                                            </h4>
-                    
-                                            <h4 class='col'>
-                                                Num.Ordine: {{$order->id}}
-                                            </h4>
+                                                    <span>
+                                                        x {{$dish->pivot->quantity}}
+                                                    </span>
+        
+                                                </h3>
+        
+                                                <h4>
+                                                    Ingredients: {{$dish->ingredients}}
+                                                </h4>
+        
+                                                <h4>
+                                                    Description: {{$dish->description}}
+                                                </h4>
+        
+                                                <h4>
+        
+                                                <span>Partial Price:</span>
+                                                
+                                                    @if(isset(explode('.',$dish->price*$dish->pivot->quantity)[1]) && count(str_split(explode('.',$dish->price*$dish->pivot->quantity)[1]),1)==1)
 
-                                        </button>
-                                    
+                                                        {{ str_replace('.',',', $dish->price*$dish->pivot->quantity).'0';}}
+
+                                                    @elseif (!isset(explode('.',$dish->price*$dish->pivot->quantity)[1]) || count(str_split(explode('.',$dish->price*$dish->pivot->quantity)[1]),1)==0) 
+
+                                                        {{ str_replace('.',',', $dish->price*$dish->pivot->quantity).'00';}}
+
+                                                    @else
+
+                                                        {{ str_replace('.',',', $dish->price*$dish->pivot->quantity);}}
+
+                                                    @endif
+                                               
+                                                <span>€</span>    
+        
+                                                </h4>
+        
+                                            </div>
+            
+                                            
+                                        </div>
+
                                     </div>
 
-                                </h2>
-
-                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    
-
-                                    <div class='card-body accordion-body'>
-            
-                                        @forelse ($order->dishes as $dish)
-                                        <div class='card'>
-
-                                            <div class="card-body row">
-                
-                                                <div class="col-2">
-                                                    <img class="img-fluid" src="{{$dish->image}}" alt="">
-                                                </div>
-                
-                                                <div class="col">
-                
-                                                    <h3>
-            
-                                                        <span>
-                                                        
-                                                        {{$dish->name}} 
-            
-                                                        </span>
-                                                
-                                                        <span>
-                                                        x {{$dish->pivot->quantity}}
-                                                        </span>
-            
-                                                    </h3>
-            
-                                                    <h4>
-                                                        {{$dish->ingredients}}
-                                                    </h4>
-            
-                                                    <h4>
-                                                        {{$dish->description}}
-                                                    </h4>
-            
-                                                    <h4>
-            
-                                                    Partial Price:{{ str_replace('.',',', $dish->price*$dish->pivot->quantity)}}€
-            
-                                                    </h4>
-            
-                                                </div>
-                
-                                                
-                                            </div>
-    
-                                        @empty
-                                        nessun piatto associato
-                                        @endforelse
-                                            
+                                    @if ($loop->last)
+                                        
                                         <div class="row">
                 
                                             <h4 class='col '>
@@ -115,13 +131,16 @@
                                             <h4 class='col '>
                                                 Total Price:{{str_replace('.',',',$order->total_price)}}€
                                             </h4>
-    
+                                            
                                         </div>
-                                    </div>
+                                        
+                                    @endif
 
-                                </div>
-            
-                                
+                                    @empty
+                                    nessun piatto associato
+                                    @endforelse
+                                        
+
 
                             </div>
 
