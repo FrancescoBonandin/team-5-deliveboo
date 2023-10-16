@@ -39,23 +39,19 @@ class DishController extends Controller
     {
         $data=$request->validated();
 
+
         $dishImage = null;
         if (isset($data['image'])) {
             $dishImage = Storage::put('uploads/images', $data['image']);
         }
 
-        $available= null;
-        if($data['available'] == true) {
-            $available= 1;
-        } else {
-            $available= 0;
-        }
+
         Dish::create([
             'name'=>$data['name'],
             'ingredients'=>$data['ingredients'],
             'description'=>$data['description'],
             'price'=>$data['price'],
-            'available'=>$available,
+            'available'=>$data['available'],
             'image'=>$dishImage,
             'restaurant_id'=>$request->user()->restaurant->id,
         ]);
@@ -101,18 +97,12 @@ class DishController extends Controller
             $dishImage = null;
         }
 
-        $available= null;
-        if($data['available'] == true) {
-            $available= 1;
-        } else {
-            $available= 0;
-        }
         $dish->update([
             'name'=>$data['name'],
             'ingredients'=>$data['ingredients'],
             'description'=>$data['description'],
             'price'=>$data['price'],
-            'available'=>$available,
+            'available'=>$data['available'],
             'image'=>$dishImage,
             'restaurant_id'=>$request->user()->restaurant->id,
         ]);

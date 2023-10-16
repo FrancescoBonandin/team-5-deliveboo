@@ -6,6 +6,7 @@
 
 <div class="container-sm">
 
+
     <form action="{{ route('dishes.update', ['dish'=>$dish->id])}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
@@ -93,12 +94,12 @@
         <label class="form-label d-block">Disponibilità</label>
         <div class="form-check form-check-inline">
             <label for="available">Disponibile</label>
-            <input class="form-check-input" type="radio" name="selected"
-            id="available" value="1" checked>
+            <input class="form-check-input" type="radio" name="available"
+            id="available" value="1" >
         </div>
         <div class="form-check form-check-inline">
             <label for="available"> Non Disponibile</label>
-            <input class="form-check-input" type="radio" name="selected"
+            <input class="form-check-input" type="radio" name="available"
             id="available" value="0">
         </div>
     </div>

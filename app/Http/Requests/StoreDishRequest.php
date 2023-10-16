@@ -26,10 +26,10 @@ class StoreDishRequest extends FormRequest
             'name'=>'string|required|max:70',
             'ingredients'=>'string|required',
             'description'=>'string|required',
-            'price'=>'decimal|required|regex:/^\d{1,2}(\.\d{1,2})?$/',
+            'price'=>'required|regex:/^\d{1,2}\.\d{1,2}$/',
             'available'=>'required|boolean',
             'image'=>'nullable|url|max:2048',
-            'restaurant_id'=>'required|exists:restaurants,id'
+            'restaurant_id'=>'exists:restaurants,id'
             
         ];
 
