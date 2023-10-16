@@ -18,7 +18,7 @@ class OrderController extends Controller
 
         $order->delete();
 
-        return redirect()->route('dashboard');
+        return redirect()->route('orders.restaurant-orders');
 
     }
 }
