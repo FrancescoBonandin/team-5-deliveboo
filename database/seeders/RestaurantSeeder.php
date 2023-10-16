@@ -51,15 +51,15 @@ class RestaurantSeeder extends Seeder
 
         for ($i=0; $i < 10; $i++) { 
 
-            $randomUser = User::inRandomOrder()->first();
+            $randomUser = User::all();
 
             $random_img = $restaurant_img[$i];
 
             Restaurant::create([
 
-                'restaurant_name' =>  fake()->company(),
+                'restaurant_name' => fake()->company(),
 
-                'user_id' => $randomUser->id,
+                'user_id' => $randomUser[$i]->id,
                 
                 'address' =>  fake()->address(),
 

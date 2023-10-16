@@ -35,6 +35,10 @@
                             Orders
                             
                         </h2>
+
+                        <h2>
+                            {{-- {{count( Auth()->user()->restaurant->orders)}} --}}
+                        </h2>
                             
                     </a>
                 </div>
@@ -48,6 +52,14 @@
                         dishes
                         
                     </h2>
+
+                        
+                    <h2>
+                        
+                        {{-- {{count(Auth()->user()->restaurant->dishes)}} --}}
+
+                    </h2>
+
                 </div>
             </div>
 

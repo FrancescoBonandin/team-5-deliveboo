@@ -33,11 +33,11 @@
                         
                         <div class="accordion-item">
 
-                            <div class="accordion-header" id="headingOne">
+                            <div class="accordion-header" id="heading{{$loop->index}}">
 
-                                <div class='card-title rowaccordion-header" id="headingOne'>
+                                <div class='card-title rowaccordion-header' id="heading{{$loop->index}}">
 
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$loop->index}}" aria-expanded="true" aria-controls="collapse{{$loop->index}}">
                                         
                                         <h4 class='col'>
                                             Cliente: {{$order->name}} {{$order->last_name}}
@@ -53,7 +53,7 @@
 
                             </div>
 
-                            <div id="collapseOne" class="accordion-collapse collapse"  data-bs-parent="#accordionExample">
+                            <div id="collapse{{$loop->index}}" class="accordion-collapse collapse"  data-bs-parent="#accordionExample">
                                 
 
                                 <div class='card-body accordion-body'>
