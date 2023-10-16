@@ -78,9 +78,9 @@ class DishSeeder extends Seeder
 
             $randomRestaurant = Restaurant::inRandomOrder()->first();
 
-            $random_img = $dish_img[$i];
+            $img = $dish_img[$i];
 
-            $random_name = $dish_name[$i];
+            $name = $dish_name[$i];
 
             $random_number = rand(1,6);
 
@@ -88,7 +88,7 @@ class DishSeeder extends Seeder
 
                 'restaurant_id' => $randomRestaurant->id,
 
-                'name' =>  $random_name,
+                'name' =>  $name,
                 
                 'ingredients' =>  fake()->words($random_number, true),
                 
@@ -98,7 +98,7 @@ class DishSeeder extends Seeder
  
                 'available' => fake()->boolean(),
 
-                'image' => $random_img
+                'image' => $img
                 
             ]);
             
