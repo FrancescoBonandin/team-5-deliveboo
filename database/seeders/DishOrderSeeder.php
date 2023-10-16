@@ -30,7 +30,7 @@ class DishOrderSeeder extends Seeder
             $order->dishes()->detach();
         }
 
-        foreach ($orders as $index=> $order) {
+        foreach ($orders as  $order) {
 
             // cicla tutti gli ordini
             $total_price=0;
