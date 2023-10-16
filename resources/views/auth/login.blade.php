@@ -7,7 +7,7 @@
         <!-- Email Address -->
         <div class="form-floating">
 
-            <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="email" id="email" name="email" placeholder="email">
+            <input class="form-control rounded-pill px-3 deliveboo-primary-border"  type="email" id="email" name="email" placeholder="email" required>
 
             <label class="mx-2" for="email">Email</label>
 
@@ -16,7 +16,7 @@
         <!-- Password -->
         <div class="mt-4 form-floating">
 
-            <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="password" id="password" name="password" placeholder="password">
+            <input class="form-control rounded-pill px-3 deliveboo-primary-border"  type="password" id="password" name="password" placeholder="password" required>
 
             <label class="mx-2" for="password">Password</label>
 

@@ -37,7 +37,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'email', 'max:319', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'restaurant_name'=>['required', 'max:255'],
             'address'=>['required', 'max:255'],
@@ -61,8 +61,6 @@ class RegisteredUserController extends Controller
             'address'=> $request->address,
             'image'=>$request->image,
             'p_iva'=>$request->p_iva,
-
-          
 
         ]);
 

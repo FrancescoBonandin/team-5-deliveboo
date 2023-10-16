@@ -33,8 +33,8 @@ class StoreDishRequest extends FormRequest
             
         ];
 
-       
     }
+
     public function messages(): array
     {
         return [
@@ -47,7 +47,5 @@ class StoreDishRequest extends FormRequest
             'restaurant_id'=>'Questo campo è obbligatorio'
             
         ];
-
-       
     }
 }

@@ -10,7 +10,7 @@
             <!-- Name -->
             <div class="form-floating">
 
-                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="name" name="name" placeholder="nome" value="{{old('name')}}">
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="name" name="name" placeholder="nome" value="{{old('name')}}" required max='255'>
 
                 <label class="form-label mx-2" for="name">Name</label>
 
@@ -19,7 +19,7 @@
             <!-- Email Address -->
             <div class="mt-2 form-floating">
 
-                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="email" id="email" name="email" placeholder="email" value="{{old('email')}}">
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="email" id="email" name="email" placeholder="email" value="{{old('email')}}" required max='319'>
 
                 <label class="form-label mx-2" for="email">Email</label>
 
@@ -28,7 +28,7 @@
             <!-- Password -->
             <div class="mt-2 form-floating">
 
-                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="password" id="password" name="password" placeholder="password">
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="password" id="password" name="password" placeholder="password" required min='8'>
 
                 <label class="form-label mx-2" for="password">Password</label>
 
@@ -37,7 +37,7 @@
             <!-- Confirm Password -->
             <div class="mt-2 form-floating">
 
-                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="password" id="password_confirmation" name="password_confirmation" placeholder="password">
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="password" id="password_confirmation" name="password_confirmation" placeholder="password" required min='8'>
 
                 <label class="form-label mx-2" for="password_confirmation">Conferma Password</label>
 
@@ -46,7 +46,7 @@
             {{-- restaurant name --}}
             <div class="mt-2 form-floating">
 
-                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="restaurant_name" name="restaurant_name" placeholder="nome ristorante" value="{{old('restaurant_name')}}">
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="restaurant_name" name="restaurant_name" placeholder="nome ristorante" value="{{old('restaurant_name')}}" required max="255">
 
                 <label class="form-label mx-2" for="restaurant_name">Nome Ristorante</label>
 
@@ -55,7 +55,7 @@
             {{-- restaurant address --}}
             <div class="mt-2 form-floating">
 
-                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="address" name="address" placeholder="indirizzo" value="{{old('address')}}">
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="address" name="address" placeholder="indirizzo" value="{{old('address')}}" required max="255">
 
                 <label class="form-label mx-2" for="address">Indirizzo</label>
 
@@ -64,7 +64,7 @@
             {{-- iva --}}
             <div class="mt-2 form-floating">
 
-                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="p_iva" name="p_iva" placeholder="partita iva" value="{{old('p_iva')}}">
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="p_iva" name="p_iva" placeholder="partita iva" value="{{old('p_iva')}}" required min="11" max="11">
 
                 <label class="form-label mx-2" for="p_iva">Partita iva</label>
 
@@ -87,49 +87,36 @@
             <div class="mt-3 mb-3 primary-bg-card p-2">
 
                 <label class="form-label d-block">Categorie</label>
-
-
-
-
-
-
-
-
-
-
-
-
-        
         
                 @forelse ($categories as $category )
         
                 <div class="d-inline">
         
-                <input 
-                
-                    type="checkbox" 
-        
-                    class="btn-check"
-        
-                    id="category-{{$category ->id}}"
-        
-                    value="{{$category ->id}}" 
-        
-                    name="categories[]" 
-        
-                    @if ( in_array($category ->id , old('categories', [])))
-        
-                    checked
-                        
-                    @endif
+                    <input 
                     
+                        type="checkbox" 
+            
+                        class="btn-check"
+            
+                        id="category-{{$category ->id}}"
+            
+                        value="{{$category ->id}}" 
+            
+                        name="categories[]" 
+            
+                        @if ( in_array($category ->id , old('categories', [])))
+            
+                        checked
+                            
+                        @endif
+                        
                     >
         
-                <label class="btn btn-outline-light m-2" for="category-{{$category ->id}}">
-                
-                    {{$category->category_name}}
-        
-                </label>
+                    <label class="btn btn-outline-light m-2" for="category-{{$category ->id}}">
+                    
+                        {{$category->category_name}}
+            
+                    </label>
                 
                 </div>
                     

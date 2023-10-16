@@ -13,7 +13,7 @@
     <div class="mb-3">
         <label for="inputName" class="form-label">Nome del piatto</label>
         <input type="text" class="form-control @error('name') is-invalid @enderror"  id="inputName" name="name" 
-        placeholder="Inserisci il nome del tuo piatto..." value="{{old('name', $dish->name)}}">
+        placeholder="Inserisci il nome del tuo piatto..." value="{{old('name', $dish->name)}}" required max='70'>
     </div>
         @error('name')
         <div class="alert alert-danger">
@@ -26,7 +26,7 @@
     <div class="mb-3">
         <label for="inputingredients" class="form-label">Ingredienti del piatto</label>
         <input type="text" class="form-control @error('ingredients') is-invalid @enderror" required id="inputingredients" name="ingredients" 
-        placeholder="Inserisci gli ingredienti del tuo piatto..." value="{{old('ingredients', $dish->ingredients)}}">
+        placeholder="Inserisci gli ingredienti del tuo piatto..." value="{{old('ingredients', $dish->ingredients)}}" required>
     </div>
         @error('ingredients')
         <div class="alert alert-danger">
@@ -39,7 +39,7 @@
     <div class="mb-3 container-sm">
         <label for="inputDescription" class="form-label" >Descrizione del piatto</label>
         <textarea class="form-control @error('description') is-invalid @enderror" required placeholder="Inserisci la descrizione del tuo piatto.." id="inputDescription" style="height: 100px" 
-        name="description">{{old('description', $dish->description)}}</textarea>
+        name="description" required>{{old('description', $dish->description)}}</textarea>
     </div>
         @error('description')
         <div class="alert alert-danger">
@@ -52,7 +52,7 @@
     <div class="mb-3 container-sm">
         <label for="inputprice" class="form-label">Prezzo del piatto</label>
         <input type="number" class="form-control @error('price') is-invalid @enderror" required id="inputprice" name="price" min="1" max="99.99" step=".01"
-        placeholder="Inserisci il prezzo del tuo piatto..." value="{{old('price', $dish->price)}}">
+        placeholder="Inserisci il prezzo del tuo piatto..." value="{{old('price', $dish->price)}}" required>
     </div>
         @error('price')
         <div class="alert alert-danger">
@@ -94,7 +94,7 @@
         <div class="form-check form-check-inline">
             <label for="available">Disponibile</label>
             <input class="form-check-input" type="radio" name="selected"
-            id="available" value="1">
+            id="available" value="1" checked>
         </div>
         <div class="form-check form-check-inline">
             <label for="available"> Non Disponibile</label>

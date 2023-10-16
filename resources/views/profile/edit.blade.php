@@ -145,7 +145,7 @@
 
                     <form method="POST" action="{{ route('password.update', ['profile'=>Auth()->user()]) }}" class="container d-flex w-700px justify-content-center flex-wrap light-bg-card p-2 m-2 custom-shadow">
                         @csrf
-                        @method('put')
+                        @method('PUT')
 
                         <div>
                         
@@ -254,7 +254,6 @@
                         </div>
                     </div>
                 </div>
-                
             </section>
         </div>
     </div>
