@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Dish;
 use App\Models\Restaurant;
+use App\Http\Requests\StoreDishRequest;
+use App\Http\Requests\UpdateDishRequest;
 
 // Helpers
 use Illuminate\Support\Facades\Storage;
@@ -33,9 +35,9 @@ class DishController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreDishRequest $request)
     {
-        $data=$request->all();
+        $data=$request->validated();
 
         $dishImage = null;
         if (isset($data['image'])) {
@@ -79,9 +81,9 @@ class DishController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Dish $dish)
+    public function update(UpdateDishRequest $request, Dish $dish)
     {
-        $data=$request;
+        $data=$request->validated();
 
         $dishImage = $dish->image;
         if (isset($data['image'])) {
