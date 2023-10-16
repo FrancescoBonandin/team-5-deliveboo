@@ -48,7 +48,7 @@ class DishController extends Controller
             'image'=>$dishImage,
             'restaurant_id'=>$data['restaurant_id'],
         ]);
-        return redirect()->route('dishes.show');
+        return redirect()->route('admin.dashboard');
     }
 
     /**
@@ -100,7 +100,7 @@ class DishController extends Controller
             'image'=>$dishImage,
             'restaurant_id'=>$data['restaurant_id'],
         ]);
-        return redirect()->route('dishes.show', compact('dish'));
+        return redirect()->route('admin.dashboard');
     }
 
     /**
@@ -114,6 +114,6 @@ class DishController extends Controller
     
         $dish->delete();
 
-        return redirect()->route('dishes.show');
+        return redirect()->route('admin.dashboard');
     }
 }
