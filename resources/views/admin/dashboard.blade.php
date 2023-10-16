@@ -37,7 +37,9 @@
                         </h2>
 
                         <h2>
-                            {{-- {{count( Auth()->user()->restaurant->orders)}} --}}
+
+                            {{count( Auth()->user()->restaurant->orders)}}
+                            
                         </h2>
                             
                     </a>
@@ -56,7 +58,7 @@
                         
                     <h2>
                         
-                        {{-- {{count(Auth()->user()->restaurant->dishes)}} --}}
+                        {{count(Auth()->user()->restaurant->dishes)}}
 
                     </h2>
 
