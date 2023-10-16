@@ -49,6 +49,7 @@
             
             <div class="col-4">
                 <div class="card">
+                <a href="{{route('dishes.view')}}">
                     <h2 class="card-title">
                         
                         dishes

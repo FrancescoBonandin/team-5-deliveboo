@@ -14,9 +14,11 @@ class DishController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
+    public function returnView() {
+
+
+        return view('admin.dishes.restaurant-dishes');
+
     }
 
     /**
