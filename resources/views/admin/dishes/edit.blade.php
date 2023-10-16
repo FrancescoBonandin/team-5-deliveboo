@@ -6,7 +6,7 @@
 
 <div class="container-sm">
 
-    <form action="{{ route('admin.dishes.update', ['dish'=>$dish->id])}}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('dishes.update', ['dish'=>$dish->id])}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 
@@ -49,7 +49,7 @@
 
 <!-- Input prezzo piatto -->
 
-    <div class="mb-3">
+    <div class="mb-3 container-sm">
         <label for="inputprice" class="form-label">Prezzo del piatto</label>
         <input type="number" class="form-control @error('price') is-invalid @enderror" required id="inputprice" name="price" min="1" max="99.99" step=".01"
         placeholder="Inserisci il prezzo del tuo piatto..." value="{{old('price', $dish->price)}}">
@@ -66,9 +66,8 @@
       <label for="image" class="form-label" >Immagine del piatto</label>
     </div>
     <div class="container-sm"> 
-            @if($dish->image)
-                <img src="/storage/{{$dish->image}}" alt="{{$dish->name}}" class="w-25">
-            @endif
+        @if($dish->image)
+                <img src="{{$dish->image}}" alt="{{$dish->name}}" class="w-25">
         <div> 
         <div class="form-check">
         <input class="form-check-input" type="checkbox" value="1" id="remove_image" name="remove_image">
@@ -76,6 +75,7 @@
             Cancella Immagine
         </label>
         </div>
+        @endif
       <div class="container-sm">
       <label for="image" class="form-label" >Inserisci immagine</label>
       </div>
@@ -89,17 +89,19 @@
 
 <!-- Radio button disponibile -->
 
-      <div class="mb-3 container-sm">
+<div class="mb-3 container-sm">
         <label class="form-label d-block">Disponibilità</label>
-          <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline">
             <label for="available">Disponibile</label>
-            <input class="form-check-input" type="radio" name="available"
+            <input class="form-check-input" type="radio" name="selected"
             id="available" value="1">
+        </div>
+        <div class="form-check form-check-inline">
             <label for="available"> Non Disponibile</label>
-            <input class="form-check-input" type="radio" name="available"
+            <input class="form-check-input" type="radio" name="selected"
             id="available" value="0">
-          </div>
-      </div>
+        </div>
+    </div>
 
 <!-- Button submit Add -->
 

@@ -33,18 +33,42 @@
                 <li class="list-group-item"> Non disponibile &#10060;</li>
             @endif
         </ul>
-        
+
         <!-- Bottoni di modifica e cancellazione -->
         <div class="card-body">
             <a href="{{ route('dishes.edit',['dish'=>$dish->id])}}"  class="btn btn-warning m-2">Modifica il piatto</a>
-            <form action="{{ route('dishes.destroy',['dish'=>$dish->id])}}" method="POST"
-            onsubmit="return confirm('Sei sicuro di voler cancellare il piatto?');">
-            @csrf
-            @method('DELETE')
-                <button type="submit" class="btn btn-danger m-2">
-                    Cancella
-                </button>
-            </form>
+           <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                Cancella
+            </button>
+            <div class="modal fade" id="deleteModal" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"> Sei sicuro? </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class=" text-danger">
+                                        <div class=" text-warning">
+                                            Sei sicuro di voler cancellare il piatto? 
+                                        </div>
+                                        <div class=" text-danger">
+                                            (questa operazione sarà irreversibile)
+                                        </div>
+                                    </div>
+                            <form  action="{{route('dishes.destroy',['dish'=>$dish->id])}}" method="POST">
+                                        @csrf
+                                        @method('Delete')
+                                        <div class="modal-footer">
+                                            <button type='submit' class="col-3 btn btn-danger">
+                                                Cancella
+                                            </button>
+                                            <button type="button" class="col-3 btn btn-success" data-bs-dismiss="modal">
+                                                Annulla
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
         </div>
     </div>
 </div>

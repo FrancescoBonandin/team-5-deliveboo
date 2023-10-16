@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Dish;
+use App\Models\Restaurant;
 
 // Helpers
 use Illuminate\Support\Facades\Storage;
@@ -34,23 +35,29 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        $data=$request;
+        $data=$request->all();
 
         $dishImage = null;
         if (isset($data['image'])) {
             $dishImage = Storage::put('uploads/images', $data['image']);
         }
 
+        $available= null;
+        if($data['available'] == true) {
+            $available= 1;
+        } else {
+            $available= 0;
+        }
         Dish::create([
             'name'=>$data['name'],
             'ingredients'=>$data['ingredients'],
             'description'=>$data['description'],
             'price'=>$data['price'],
-            'available'=>$data['available'],
+            'available'=>$available,
             'image'=>$dishImage,
-            'restaurant_id'=>$data['restaurant_id'],
+            'restaurant_id'=>$request->user()->restaurant->id,
         ]);
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -92,17 +99,22 @@ class DishController extends Controller
             $dishImage = null;
         }
 
-        
+        $available= null;
+        if($data['available'] == true) {
+            $available= 1;
+        } else {
+            $available= 0;
+        }
         $dish->update([
             'name'=>$data['name'],
             'ingredients'=>$data['ingredients'],
             'description'=>$data['description'],
             'price'=>$data['price'],
-            'available'=>$data['available'],
+            'available'=>$available,
             'image'=>$dishImage,
-            'restaurant_id'=>$data['restaurant_id'],
+            'restaurant_id'=>$request->user()->restaurant->id,
         ]);
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -116,6 +128,6 @@ class DishController extends Controller
     
         $dish->delete();
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('dishes.view');
     }
 }

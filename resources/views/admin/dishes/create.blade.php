@@ -80,12 +80,12 @@
         <label class="form-label d-block">Disponibilità</label>
         <div class="form-check form-check-inline">
             <label for="available">Disponibile</label>
-            <input class="form-check-input" type="radio" name="selected"
+            <input class="form-check-input" type="radio" name="available"
             id="available" value="1">
         </div>
         <div class="form-check form-check-inline">
             <label for="available"> Non Disponibile</label>
-            <input class="form-check-input" type="radio" name="selected"
+            <input class="form-check-input" type="radio" name="available"
             id="available" value="0">
         </div>
     </div>
