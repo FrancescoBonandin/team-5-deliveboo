@@ -1,1 +1,120 @@
 @import '~bootstrap/scss/bootstrap';
+
+// CUSTOM CLASS
+
+// CONTAINERS
+
+.full-screen-container{
+
+    width: 100vw;
+
+    height: 100vh;
+
+}
+
+.nav-height-container{
+
+    height: 7.1875rem;
+
+}
+
+.main-height-container{
+
+    min-height: calc(100vh - 7.1875rem);
+
+}
+
+.w-50px{
+
+    width: 3.125rem;
+
+}
+
+.w-60{
+
+    width: 60%;
+}
+
+.w-500px{
+
+    width: 31.25rem;
+
+}
+
+.w-700px{
+
+    width: 43.75rem;
+
+}
+
+.w-300px{
+
+    width: 18.75rem 
+
+}
+
+.primary-bg-card{
+
+    background-color: #fe98008e;
+
+    border-radius: .625rem;
+
+}
+
+.light-bg-card{
+
+    background-color: rgba(255, 255, 255, 0.797);
+
+    border-radius: .625rem;
+
+}
+
+.primary-border-card{
+
+    border:1px solid  #fe9a00;
+
+    border-radius: .625rem;
+
+
+}
+
+// TEXT
+
+.fs-7{
+
+    font-size: .8125rem;
+}
+
+.deliveboo-primary-t-color{
+
+    color:#fe9a00
+
+}
+
+// BORDERS
+
+.deliveboo-primary-border{
+
+    border: 1px solid #fe9a00
+
+}
+
+// COMPONENTS
+.main-bg-image{
+
+    background-image: url('/resources/img/good_food-wallpaper-6.jpg');
+
+    background-size: cover;
+
+}
+
+.custom-shadow{
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    
+}
+
+
+
+
+

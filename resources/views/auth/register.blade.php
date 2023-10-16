@@ -1,141 +1,166 @@
 @extends('layouts.guest')
 
 @section('main-content')
-    <form method="POST" action="{{ route('register') }}" enctype='multipart/form-data'>
+    <form method="POST" action="{{ route('register') }}" enctype='multipart/form-data' class="container d-flex w-700px justify-content-center flex-wrap light-bg-card p-2 m-2 custom-shadow">
+
         @csrf
 
-        <!-- Name -->
-        <div>
+        <div class="p-2 col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex flex-column justify-content-between container-md">
 
-            <label for="name">Name</label>
+            <!-- Name -->
+            <div class="form-floating">
 
-            <input type="text" id="name" name="name" value="{{old('name')}}">
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="name" name="name" placeholder="nome" value="{{old('name')}}">
+
+                <label class="form-label mx-2" for="name">Name</label>
+
+            </div>
+
+            <!-- Email Address -->
+            <div class="mt-2 form-floating">
+
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="email" id="email" name="email" placeholder="email" value="{{old('email')}}">
+
+                <label class="form-label mx-2" for="email">Email</label>
+
+            </div>
+
+            <!-- Password -->
+            <div class="mt-2 form-floating">
+
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="password" id="password" name="password" placeholder="password">
+
+                <label class="form-label mx-2" for="password">Password</label>
+
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mt-2 form-floating">
+
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="password" id="password_confirmation" name="password_confirmation" placeholder="password">
+
+                <label class="form-label mx-2" for="password_confirmation">Conferma Password</label>
+
+            </div>
+
+            {{-- restaurant name --}}
+            <div class="mt-2 form-floating">
+
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="restaurant_name" name="restaurant_name" placeholder="nome ristorante" value="{{old('restaurant_name')}}">
+
+                <label class="form-label mx-2" for="restaurant_name">Nome Ristorante</label>
+
+            </div>
+
+            {{-- restaurant address --}}
+            <div class="mt-2 form-floating">
+
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="address" name="address" placeholder="indirizzo" value="{{old('address')}}">
+
+                <label class="form-label mx-2" for="address">Indirizzo</label>
+
+            </div>
+
+            {{-- iva --}}
+            <div class="mt-2 form-floating">
+
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="p_iva" name="p_iva" placeholder="partita iva" value="{{old('p_iva')}}">
+
+                <label class="form-label mx-2" for="p_iva">Partita iva</label>
+
+            </div>
 
         </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-
-            <label for="email">Email</label>
-
-            <input type="email" id="email" name="email" value="{{old('email')}}" >
-
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-
-            <label for="password"> Password</label>
-
-            <input type="password" id="password" name="password" >
-
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-
-            <label for="password_confirmation">Conferma Password</label>
-
-            <input type="password" id="password_confirmation" name="password_confirmation">
-
-        </div>
-
-        {{-- restaurant name --}}
-        <div class="mt-4">
-
-            <label for="restaurant_name">nome ristorante</label>
-
-            <input type="text" id="restaurant_name" name="restaurant_name" value="{{old('restaurant_name')}}">
-
-        </div>
-
-        {{-- restaurant address --}}
-        <div class="mt-4">
-
-            <label for="address">indirizzo</label>
-
-            <input type="text" id="address" name="address" value="{{old('address')}}">
-
-        </div>
-
-        {{-- iva --}}
-        <div class="mt-4">
-
-            <label for="p_iva">partita iva</label>
-
-            <input type="text" id="p_iva" name="p_iva" value="{{old('p_iva')}}">
-
-        </div>
-
-        {{-- restaurant image --}}
-        <div class="mb-4">
-
-            <label for="image" class="form-label">immagine ristorante</label>
-      
-            <input class="form-control" type="file" id="image" name="image" accept="image/" value="{{old('image')}}">
-      
-        </div>
-
-        {{-- restaurant categories --}}
-        <div class="mt-3 mb-3">
-
-            <label class="form-label d-block">categorie</label>
-      
-            @forelse ($categories as $category )
-      
-            <div class="d-inline">
-      
-              <input 
-              
-                type="checkbox" 
-      
-                class="btn-check"
-      
-                id="category-{{$category ->id}}"
-      
-                value="{{$category ->id}}" 
-      
-                name="categories[]" 
-      
-                @if ( in_array($category ->id , old('categories', [])))
-      
-                checked
-                    
-                @endif
-                
-                >
-      
-              <label class="btn btn-outline-primary" for="category-{{$category ->id}}">
-              
-                {{$category->category_name}}
-      
-              </label>
+        <div class="p-2 col-lg-6 col-md-6 col-sm-12 col-xs-12">
             
+            {{-- restaurant image --}}
+            <div class="mb-2 primary-bg-card p-2">
+
+                <label for="image" class="form-label">Immagine Ristorante</label>
+        
+                <input class="form-control" type="file" id="image" name="image" accept="image/" value="{{old('image')}}">
+        
             </div>
+
+            {{-- restaurant categories --}}
+            <div class="mt-3 mb-3 primary-bg-card p-2">
+
+                <label class="form-label d-block">Categorie</label>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+                @forelse ($categories as $category )
+        
+                <div class="d-inline">
+        
+                <input 
                 
-            @empty
+                    type="checkbox" 
+        
+                    class="btn-check"
+        
+                    id="category-{{$category ->id}}"
+        
+                    value="{{$category ->id}}" 
+        
+                    name="categories[]" 
+        
+                    @if ( in_array($category ->id , old('categories', [])))
+        
+                    checked
+                        
+                    @endif
+                    
+                    >
+        
+                <label class="btn btn-outline-light m-2" for="category-{{$category ->id}}">
+                
+                    {{$category->category_name}}
+        
+                </label>
+                
+                </div>
+                    
+                @empty
+        
+                <div>
+        
+                nessuna categoria disponibile
+        
+                </div>
+                    
+                @endforelse
+        
+            </div>
       
+            {{-- LOGIN --}}
             <div>
-      
-              nessuna categoria disponibile
-      
+
+                <a class="btn btn-outline-danger  w-100 py-2 my-2 text-decoration-none" href="{{ route('login') }}">
+
+                    {{ __('Già registrato?') }}
+
+                </a>
+
+                <button class="btn btn-primary w-100 py-2 my-2" type="submit">
+
+                    Crea account
+
+                </button>
+
             </div>
-                
-            @endforelse
-      
-          </div>
-      
-        {{-- LOGIN --}}
-        <div>
-            <a href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <button type="submit">
-
-                Register
-
-            </button>
 
         </div>
     </form>
