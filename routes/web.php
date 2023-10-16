@@ -24,18 +24,17 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')
+->prefix('admin')
+->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::resource('dishes', DishController::class)->middleware(['auth', 'verified'])->except(['index']);
+    Route::resource('/dishes', DishController::class)->middleware(['auth', 'verified'])->except(['index']);
+    Route::get('/orders', function(){ return view('admin.orders.restaurant-orders');})->name('orders.view');
+    Route::delete('/orders', [OrderController::class, 'destroy'])->name('orders');
 });
 
-Route::get('/orders', function(){ return view('orders.restaurant-orders');})->name('orders.view');
 
-
-
-
-Route::delete('/orders', [OrderController::class, 'destroy'])->name('orders');
 
 require __DIR__.'/auth.php' ;
