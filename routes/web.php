@@ -31,6 +31,7 @@ Route::middleware('auth')
     Route::resource('/profile', ProfileController::class)->except(['index', 'show', 'create', 'store']);
     Route::resource('/dishes', DishController::class)->except(['index']);
     Route::get('/orders', [OrderController::class,'returnView'])->name('orders.view');
+    Route::get('/dishes', [DishController::class,'returnView'])->name('dishes.view');
     Route::delete('/orders', [OrderController::class, 'destroy'])->name('orders');
 });
 
