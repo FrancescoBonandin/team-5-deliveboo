@@ -12,6 +12,16 @@ use App\Models\Order;
 
 class OrderController extends Controller
 {
+
+
+
+    public function returnView() {
+
+
+        return view('admin.orders.restaurant-orders');
+
+    }
+
     public function destroy(string $id) {
 
         $order = Order::findOrFail($id);

@@ -42,7 +42,7 @@ class RegisteredUserController extends Controller
             'restaurant_name'=>['required', 'max:255'],
             'address'=>['required', 'max:255'],
             'image'=>['nullable','image'],
-            'p_iva'=>['required','max:11'],
+            'p_iva'=>['required','min:11','max:11'],
             'categories' => 'nullable|array',
             'categories.*'=>'exists:categories,id',
 
