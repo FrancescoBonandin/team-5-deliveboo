@@ -28,7 +28,7 @@
             <div class="col-4">
 
                 <div class="card">
-                    <a href="{{route('admin.orders.view')}}">
+                    <a href="{{route('orders.view')}}">
 
                         <h2 class="card-title">
                             
