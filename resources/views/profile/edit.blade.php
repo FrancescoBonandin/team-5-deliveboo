@@ -24,7 +24,7 @@
                             <!-- Name -->
                             <div class="form-floating">
                 
-                                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="name" name="name" placeholder="nome" value="{{old('name',auth()->user()->name) }}">
+                                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="name" name="name" placeholder="nome" value="{{old('name',auth()->user()->name) }}" required Max='255'>
                 
                                 <label class="form-label mx-2" for="name">Name</label>
                 
@@ -33,7 +33,7 @@
                             <!-- Email Address -->
                             <div class="mt-2 form-floating">
                 
-                                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="email" id="email" name="email" placeholder="email" value="{{old('email', auth()->user()->email)}}">
+                                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="email" id="email" name="email" placeholder="email" value="{{old('email', auth()->user()->email)}}" required max='319'>
                 
                                 <label class="form-label mx-2" for="email">Email</label>
                 
@@ -42,7 +42,7 @@
                             {{-- restaurant name --}}
                             <div class="mt-2 form-floating">
                 
-                                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="restaurant_name" name="restaurant_name" placeholder="nome ristorante" value="{{old('restaurant_name', auth()->user()->restaurant->restaurant_name)}}">
+                                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="restaurant_name" name="restaurant_name" placeholder="nome ristorante" value="{{old('restaurant_name', auth()->user()->restaurant->restaurant_name)}}" required max='255'>
                 
                                 <label class="form-label mx-2" for="restaurant_name">Nome Ristorante</label>
                 
@@ -51,7 +51,7 @@
                             {{-- restaurant address --}}
                             <div class="mt-2 form-floating">
                 
-                                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="address" name="address" placeholder="indirizzo" value="{{old('address', auth()->user()->restaurant->address)}}">
+                                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="address" name="address" placeholder="indirizzo" value="{{old('address', auth()->user()->restaurant->address)}}" required max='255'>
                 
                                 <label class="form-label mx-2" for="address">Indirizzo</label>
                 
@@ -60,7 +60,7 @@
                             {{-- iva --}}
                             <div class="mt-2 form-floating">
                 
-                                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="p_iva" name="p_iva" placeholder="partita iva" value="{{old('p_iva', auth()->user()->restaurant->p_iva)}}">
+                                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="p_iva" name="p_iva" placeholder="partita iva" value="{{old('p_iva', auth()->user()->restaurant->p_iva)}}" required min='11' max='11'>
                 
                                 <label class="form-label mx-2" for="p_iva">Partita iva</label>
                 
@@ -152,7 +152,7 @@
                             <!--Current Password -->
                             <div class="mt-2 form-floating">
 
-                                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="password" id="current_password" name="current_password" placeholder="current password">
+                                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="password" id="current_password" name="current_password" placeholder="current password"  required min='8'>
 
                                 <label class="form-label mx-2" for="password">Old Password</label>
 
@@ -161,7 +161,7 @@
                             <!-- Password -->
                             <div class="mt-2 form-floating">
 
-                                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="password" id="password" name="password" placeholder="new password">
+                                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="password" id="password" name="password" placeholder="new password"  required min='8'>
 
                                 <label class="form-label mx-2" for="password">New Password</label>
 
@@ -170,7 +170,7 @@
                             <!-- Confirm Password -->
                             <div class="mt-2 form-floating">
 
-                                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="password" id="password_confirmation" name="password_confirmation" placeholder="confirm new password">
+                                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="password" id="password_confirmation" name="password_confirmation" placeholder="confirm new password"  required min='8'>
 
                                 <label class="form-label mx-2" for="password_confirmation">Conferma Password</label>
 
@@ -228,7 +228,7 @@
 
                                         <div class="mt-2 form-floating">
 
-                                            <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="password" id="password" name="password" placeholder="new password">
+                                            <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="password" id="password" name="password" placeholder="new password"  required min='8'>
             
                                             <label class="form-label mx-2" for="password">Password</label>
             
