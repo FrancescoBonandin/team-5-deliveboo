@@ -200,4 +200,6 @@
 
         </div>
     </form>
+    <script src="../../js/script.js"></script>
+
 @endsection
