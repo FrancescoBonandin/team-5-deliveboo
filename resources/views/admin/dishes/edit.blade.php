@@ -19,8 +19,8 @@
         @error('name')
         <div class="alert alert-danger">
             {{$message}}
-            @enderror
         </div>
+        @enderror
 
 <!-- Input ingredienti piatto -->
     
@@ -32,8 +32,8 @@
         @error('ingredients')
         <div class="alert alert-danger">
             {{$message}}
-            @enderror
         </div>
+        @enderror
 
 <!-- Input descrizione piatto -->
 
@@ -45,8 +45,8 @@
         @error('description')
         <div class="alert alert-danger">
             {{$message}}
-            @enderror
         </div>
+        @enderror
 
 <!-- Input prezzo piatto -->
 
@@ -58,8 +58,8 @@
         @error('price')
         <div class="alert alert-danger">
             {{$message}}
-            @enderror
         </div>
+        @enderror
 
 <!-- Input immagine piatto -->
 
