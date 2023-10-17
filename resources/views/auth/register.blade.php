@@ -183,9 +183,10 @@
             {{-- LOGIN --}}
             <div>
 
-                <a class="btn btn-outline-danger  w-100 py-2 my-2 text-decoration-none" href="{{ route('login') }}">
+                <a class="btn btn-outline-warning  w-100 py-2 my-2 text-decoration-none" href="{{ route('login') }}">
 
                     {{ __('Già registrato?') }}
+                    {{ __('Clicca qui') }}
 
                 </a>
 
