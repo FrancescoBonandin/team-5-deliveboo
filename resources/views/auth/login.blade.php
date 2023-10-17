@@ -9,7 +9,7 @@
 
             <input class="form-control rounded-pill px-3 deliveboo-primary-border"  type="email" id="email" name="email" placeholder="email" required>
 
-            <label class="mx-2" for="email">Email</label>
+            <label class="mx-2" for="email">Email <span class="text-danger">*</span></label>
 
         </div>
 
@@ -18,7 +18,7 @@
 
             <input class="form-control rounded-pill px-3 deliveboo-primary-border"  type="password" id="password" name="password" placeholder="password" required>
 
-            <label class="mx-2" for="password">Password</label>
+            <label class="mx-2" for="password">Password <span class="text-danger">*</span> </label>
 
         </div>
 

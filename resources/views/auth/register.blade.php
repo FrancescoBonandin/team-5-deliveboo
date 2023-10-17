@@ -12,7 +12,7 @@
 
                 <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="name" name="name" placeholder="nome" value="{{old('name')}}" required max='255'>
 
-                <label class="form-label mx-2" for="name">Name</label>
+                <label class="form-label mx-2" for="name">Name <span class="text-danger">*</span> </label>
 
             </div>
 
@@ -21,7 +21,7 @@
 
                 <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="email" id="email" name="email" placeholder="email" value="{{old('email')}}" required max='319'>
 
-                <label class="form-label mx-2" for="email">Email</label>
+                <label class="form-label mx-2" for="email">Email <span class="text-danger">*</span> </label>
 
             </div>
 
@@ -30,7 +30,7 @@
 
                 <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="password" id="password" name="password" placeholder="password" required min='8'>
 
-                <label class="form-label mx-2" for="password">Password</label>
+                <label class="form-label mx-2" for="password">Password <span class="text-danger">*</span> </label>
 
             </div>
 
@@ -48,7 +48,7 @@
 
                 <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="restaurant_name" name="restaurant_name" placeholder="nome ristorante" value="{{old('restaurant_name')}}" required max="255">
 
-                <label class="form-label mx-2" for="restaurant_name">Nome Ristorante</label>
+                <label class="form-label mx-2" for="restaurant_name">Nome Ristorante <span class="text-danger">*</span></label>
 
             </div>
 
@@ -57,7 +57,7 @@
 
                 <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="address" name="address" placeholder="indirizzo" value="{{old('address')}}" required max="255">
 
-                <label class="form-label mx-2" for="address">Indirizzo</label>
+                <label class="form-label mx-2" for="address">Indirizzo <span class="text-danger">*</span></label>
 
             </div>
 
@@ -66,7 +66,7 @@
 
                 <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="p_iva" name="p_iva" placeholder="partita iva" value="{{old('p_iva')}}" required min="11" max="11">
 
-                <label class="form-label mx-2" for="p_iva">Partita iva</label>
+                <label class="form-label mx-2" for="p_iva">Partita iva <span class="text-danger">*</span></label>
 
             </div>
 
