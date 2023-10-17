@@ -65,7 +65,7 @@
             
             <div class="col-lg-4 col-sm-12 p-2 hover-trigger">
 
-                <a href="{{route('orders.view')}}">
+                <a href="{{route('dishes.view')}}">
 
                     <div class="card light-bg-card s-secondary-border-color p-2">
 

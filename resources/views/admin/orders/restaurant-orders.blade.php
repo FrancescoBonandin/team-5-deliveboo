@@ -79,6 +79,15 @@
 
                             <div class="my-1 primary-bg-card p-2">
 
+                                <h3>Data e orario</h3>
+
+                                <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['date'] }}</span>
+                                <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['time'] }}</span>
+
+                            </div>
+
+                            <div class="my-1 primary-bg-card p-2">
+
                                 <h3>totale</h3>
 
                                 <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['total_price'] }} &euro;</span>
@@ -178,6 +187,15 @@
                             <h3>telefono</h3>
 
                             <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['phone_number'] }}</span>
+
+                        </div>
+
+                        <div class="my-1 primary-bg-card p-2">
+
+                            <h3>Data e orario</h3>
+
+                            <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['date'] }}</span>
+                            <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['time'] }}</span>
 
                         </div>
 
