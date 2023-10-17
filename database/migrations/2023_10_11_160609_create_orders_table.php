@@ -26,6 +26,10 @@ return new class extends Migration
             $table->string('phone_number', 12);
             
             $table->string('email', 319);
+
+            $table->date('date');
+
+            $table->time('time');
             
             $table->unsignedDecimal('total_price', 8, 2);
             

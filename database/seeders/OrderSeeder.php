@@ -45,6 +45,10 @@ class OrderSeeder extends Seeder
 
                 'email' =>  fake()->email(),
 
+                'date' => fake()->dateTimeBetween('-1 year'),
+
+                'time' => fake()->time(),
+
                 'total_price' => 0,
                 
             ]);
