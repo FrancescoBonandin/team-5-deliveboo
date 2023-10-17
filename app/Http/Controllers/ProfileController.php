@@ -17,6 +17,11 @@ class ProfileController extends Controller
     public function edit(Request $request): View
     {
 
+        if($request->user->id != Auth::id())
+        {
+            return back();
+        }
+
         $categories=Category::all();
 
         return view('profile.edit', [
@@ -30,6 +35,12 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+
+        if($request->user->id != Auth::id())
+        {
+            return back();
+        }
+
         $request->user()->fill($request->validated());
 
         // if ($request->user()->isDirty('email')) {
@@ -62,6 +73,11 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        if($request->user->id != Auth::id())
+        {
+            return back();
+        }
+
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);
