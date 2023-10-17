@@ -41,6 +41,8 @@
 
                     </a>
 
+                  
+
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 
                         <span class="navbar-toggler-icon"></span>
@@ -48,6 +50,10 @@
                     </button>
 
                     <div class="collapse navbar-collapse justify-content-end" id="navbarText">
+
+                        <a class="btn btn-outline-warning me-4" href="{{ route('profile.edit', ['profile'=>auth()->user()]) }}">
+                            Edit
+                        </a>
 
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

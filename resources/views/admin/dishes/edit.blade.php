@@ -15,7 +15,7 @@
         <label for="inputName" class="form-label">Nome del piatto</label>
         <span class="text-danger">*</span>
         <input type="text" class="form-control @error('name') is-invalid @enderror"  id="inputName" name="name" 
-        placeholder="Inserisci il nome del tuo piatto..." value="{{old('name', $dish->name)}}" required max='70'>
+        placeholder="Inserisci il nome del tuo piatto..." value="{{old('name', $dish->name)}}" required maxlength='70'>
     </div>
         @error('name')
         <div class="alert alert-danger">
