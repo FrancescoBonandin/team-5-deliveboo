@@ -10,27 +10,45 @@
             <!-- Name -->
             <div class="form-floating">
 
-                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="name" name="name" placeholder="nome" value="{{old('name')}}" required max='255'>
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border @error('name') is-invalid @enderror" type="text" id="name" name="name" placeholder="nome" value="{{old('name')}}" required max='255'>
 
-                <label class="form-label mx-2" for="name">Name <span class="text-danger">*</span> </label>
+                <label class="form-label mx-2" for="name">Name</label>
+
+                @error('name')
+                <div class="alert alert-danger">
+                    {{$message}}
+                </div>
+                @enderror
 
             </div>
 
             <!-- Email Address -->
             <div class="mt-2 form-floating">
 
-                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="email" id="email" name="email" placeholder="email" value="{{old('email')}}" required max='319'>
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border @error('email') is-invalid @enderror" type="email" id="email" name="email" placeholder="email" value="{{old('email')}}" required max='319'>
 
-                <label class="form-label mx-2" for="email">Email <span class="text-danger">*</span> </label>
+                <label class="form-label mx-2" for="email">Email</label>
+
+                @error('email')
+                <div class="alert alert-danger">
+                    {{$message}}
+                </div>
+                @enderror
 
             </div>
 
             <!-- Password -->
             <div class="mt-2 form-floating">
 
-                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="password" id="password" name="password" placeholder="password" required min='8'>
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border @error('password') is-invalid @enderror" type="password" id="password" name="password" placeholder="password" required min='8'>
 
-                <label class="form-label mx-2" for="password">Password <span class="text-danger">*</span> </label>
+                <label class="form-label mx-2" for="password">Password</label>
+
+                @error('password')
+                <div class="alert alert-danger">
+                    {{$message}}
+                </div>
+                @enderror
 
             </div>
 
@@ -46,27 +64,45 @@
             {{-- restaurant name --}}
             <div class="mt-2 form-floating">
 
-                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="restaurant_name" name="restaurant_name" placeholder="nome ristorante" value="{{old('restaurant_name')}}" required max="255">
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border @error('restaurant_name') is-invalid @enderror" type="text" id="restaurant_name" name="restaurant_name" placeholder="nome ristorante" value="{{old('restaurant_name')}}" required max="255">
 
-                <label class="form-label mx-2" for="restaurant_name">Nome Ristorante <span class="text-danger">*</span></label>
+                <label class="form-label mx-2" for="restaurant_name">Nome Ristorante</label>
+
+                @error('restaurant_name')
+                <div class="alert alert-danger">
+                    {{$message}}
+                </div>
+                @enderror
 
             </div>
 
             {{-- restaurant address --}}
             <div class="mt-2 form-floating">
 
-                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="address" name="address" placeholder="indirizzo" value="{{old('address')}}" required max="255">
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border @error('adress') is-invalid @enderror" type="text" id="address" name="address" placeholder="indirizzo" value="{{old('address')}}" required max="255">
 
-                <label class="form-label mx-2" for="address">Indirizzo <span class="text-danger">*</span></label>
+                <label class="form-label mx-2" for="address">Indirizzo</label>
+
+                @error('adress')
+                <div class="alert alert-danger">
+                    {{$message}}
+                </div>
+                @enderror
 
             </div>
 
             {{-- iva --}}
             <div class="mt-2 form-floating">
 
-                <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="text" id="p_iva" name="p_iva" placeholder="partita iva" value="{{old('p_iva')}}" required min="11" max="11">
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border @error('p_iva') is-invalid @enderror" type="text" id="p_iva" name="p_iva" placeholder="partita iva" value="{{old('p_iva')}}" required min="11" max="11">
 
-                <label class="form-label mx-2" for="p_iva">Partita iva <span class="text-danger">*</span></label>
+                <label class="form-label mx-2" for="p_iva">Partita iva</label>
+
+                @error('p_iva')
+                <div class="alert alert-danger">
+                    {{$message}}
+                </div>
+                @enderror
 
             </div>
 
@@ -79,8 +115,14 @@
 
                 <label for="image" class="form-label">Immagine Ristorante</label>
         
-                <input class="form-control" type="file" id="image" name="image" accept="image/" value="{{old('image')}}">
-        
+                <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" accept="image/" value="{{old('image')}}">
+                
+                @error('image')
+                <div class="alert alert-danger">
+                    {{$message}}
+                </div>
+                @enderror
+
             </div>
 
             {{-- restaurant categories --}}
@@ -96,7 +138,7 @@
                     
                         type="checkbox" 
             
-                        class="btn-check"
+                        class="btn-check @error('categories.*') is-invalid @enderror"
             
                         id="category-{{$category ->id}}"
             
@@ -117,6 +159,12 @@
                         {{$category->category_name}}
             
                     </label>
+
+                    @error('categories.*')
+                    <div class="alert alert-danger">
+                        {{$message}}
+                    </div>
+                    @enderror
                 
                 </div>
                     
