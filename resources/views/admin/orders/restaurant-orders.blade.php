@@ -6,6 +6,12 @@
 
 <div class="w-100"> 
 
+    <div class="btn btn-primary my-4">
+
+        <a class="text-reset text-decoration-none" href="{{ route('dashboard') }}">indietro</a>
+
+    </div>
+
     @if ( count(Auth()->user()->restaurant->orders->toArray()) > 0)
         
     <div id="carouselExample" class="carousel slide light-bg-card p-2 m-3 custom-shadow">
@@ -261,7 +267,6 @@
 
             </div> 
                 
-
             @endif
 
             @endfor
@@ -285,7 +290,11 @@
     @else  
 
 
-        nessun ordine 
+        <h1 class="deliveboo-green-t-color light-bg-card">
+
+            non hai nessun ordine 
+
+        </h1>
 
     
 
