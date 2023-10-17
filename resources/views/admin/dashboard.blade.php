@@ -6,7 +6,7 @@
 
     <div class="row">
 
-        <div class="col light-bg-card mt-4 mb-6 s-secondary-border-color text-center">
+        <div class="col light-bg-card m-2 mt-4 mb-6 s-secondary-border-color text-center">
            
             <h1 class="deliveboo-green-t-color">
 
