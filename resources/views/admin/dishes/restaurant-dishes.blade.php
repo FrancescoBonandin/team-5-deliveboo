@@ -27,7 +27,7 @@
         <!-- Lista dei piatti associati al ristorante -->
         @forelse(Auth()->user()->restaurant->dishes as $dish)
         <h5 class="card-title"> {{$dish->name}} </h5>
-        <img src="{{$dish->image}} " alt="" class="w-50">
+        <img src="{{asset('/storage/'.$dish->image)}}" alt="" class="w-50">
 
         <!-- Bottone di visualizzazione (show) -->
         <div class="card-body">

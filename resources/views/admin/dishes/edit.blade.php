@@ -68,7 +68,12 @@
     </div>
     <div class="container-sm"> 
         @if($dish->image)
-                <img src="{{$dish->image}}" alt="{{$dish->name}}" class="w-25">
+            @if ($dish->image)
+                <img src="{{asset('/storage/'.$dish->image)}}" alt="{{$dish->name}}" class="w-25">
+            @else
+                
+            @endif
+                
         <div> 
         <div class="form-check">
         <input class="form-check-input" type="checkbox" value="1" id="remove_image" name="remove_image">
@@ -95,12 +100,16 @@
         <div class="form-check form-check-inline">
             <label for="available">Disponibile</label>
             <input class="form-check-input" type="radio" name="available"
-            id="available" value="1" >
+            id="available" value="1" @if(old('available'))
+            checked
+            @endif>
         </div>
         <div class="form-check form-check-inline">
             <label for="available"> Non Disponibile</label>
             <input class="form-check-input" type="radio" name="available"
-            id="available" value="0">
+            id="available" value="0" @if(old('available'))
+            checked
+            @endif>
         </div>
     </div>
 
