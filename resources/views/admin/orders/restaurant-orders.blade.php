@@ -14,7 +14,7 @@
 
     @if ( count(Auth()->user()->restaurant->orders->toArray()) > 0)
         
-    <div id="carouselExample" class="carousel slide light-bg-card p-2 m-3 custom-shadow">
+    <div id="carouselExample" class="carousel slide light-bg-card p-2 mx-3 mb-4 mt-2 custom-shadow">
 
         <div
 
@@ -88,6 +88,7 @@
                                 <h3>Data e orario</h3>
 
                                 <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['date'] }}</span>
+
                                 <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['time'] }}</span>
 
                             </div>
