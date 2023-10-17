@@ -11,6 +11,12 @@
 
             <label class="mx-2" for="email">Email <span class="text-danger">*</span></label>
 
+            @error('email')
+            <div class="alert alert-danger">
+                {{$message}}
+            </div>
+            @enderror
+
         </div>
 
         <!-- Password -->
@@ -19,6 +25,12 @@
             <input class="form-control rounded-pill px-3 deliveboo-primary-border"  type="password" id="password" name="password" placeholder="password" required>
 
             <label class="mx-2" for="password">Password <span class="text-danger">*</span> </label>
+
+            @error('password')
+            <div class="alert alert-danger">
+                {{$message}}
+            </div>
+            @enderror
 
         </div>
 

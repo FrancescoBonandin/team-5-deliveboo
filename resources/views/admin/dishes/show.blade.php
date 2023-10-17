@@ -11,7 +11,8 @@
     <!-- Nome e immagine -->
         <h5 class="card-title">{{$dish->name}} </h5>
         @if($dish->image)
-            <img src="{{$dish->image}}" alt="{{$dish->name}}" class="card-img-top">
+            <img src="{{asset('/storage/'.$dish->image)}}" alt="{{$dish->name}}" class="card-img-top">
+            
         @else
             <h6>Immagine non disponibile</h6>
         @endif
@@ -41,34 +42,37 @@
                 Cancella
             </button>
             <div class="modal fade" id="deleteModal" tabindex="-1">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title"> Sei sicuro? </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"> Sei sicuro? </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class=" text-danger">
+                                <div class=" text-warning">
+                                    Sei sicuro di voler cancellare il piatto? 
                                 </div>
-                                <div class="modal-body">
-                                    <div class=" text-danger">
-                                        <div class=" text-warning">
-                                            Sei sicuro di voler cancellare il piatto? 
-                                        </div>
-                                        <div class=" text-danger">
-                                            (questa operazione sarà irreversibile)
-                                        </div>
-                                    </div>
-                            <form  action="{{route('dishes.destroy',['dish'=>$dish->id])}}" method="POST">
-                                        @csrf
-                                        @method('Delete')
-                                        <div class="modal-footer">
-                                            <button type='submit' class="col-3 btn btn-danger">
-                                                Cancella
-                                            </button>
-                                            <button type="button" class="col-3 btn btn-success" data-bs-dismiss="modal">
-                                                Annulla
-                                            </button>
-                                        </div>
-                                    </form>
+                                <div class=" text-danger">
+                                    (questa operazione sarà irreversibile)
                                 </div>
+                            </div>
+                        </div>
+                        <form  action="{{route('dishes.destroy',['dish'=>$dish->id])}}" method="POST">
+                            @csrf
+                            @method('Delete')
+                            <div class="modal-footer">
+                                <button type='submit' class="col-3 btn btn-danger">
+                                    Cancella
+                                </button>
+                                <button type="button" class="col-3 btn btn-success" data-bs-dismiss="modal">
+                                    Annulla
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

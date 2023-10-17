@@ -12,6 +12,8 @@ use App\Models\Restaurant;
 
 use App\Models\Dish;
 
+use Illuminate\Support\Facades\Storage;
+
 class DishSeeder extends Seeder
 {
     /**
@@ -24,7 +26,12 @@ class DishSeeder extends Seeder
 
             Dish::truncate();
 
+            
+
         });
+
+        storage::deleteDirectory('uploads/images/');
+        storage::makeDirectory('uploads/images/');
 
         $dish_img = [ 
             
@@ -35,8 +42,6 @@ class DishSeeder extends Seeder
             'https://media-cdn.tripadvisor.com/media/photo-s/15/9e/05/d1/grilled-prawn.jpg',
 
             'https://cdn.images.ondaplatform.com/portals_articles/1110/gallery/P1030749-XL.jpg?crop=smart&mt=1674553138&width=420&height=280&format=jpeg',
-
-            'https://baltimore.org/wp-content/uploads/2020/02/Alt-Bygone-1680x0-c-default.png',
 
             'https://northernvirginiamag.com/wp-content/uploads/2022/10/2941cover.jpg',
 
@@ -77,8 +82,22 @@ class DishSeeder extends Seeder
         for ($i=0; $i < 10; $i++) { 
 
             $randomRestaurant = Restaurant::inRandomOrder()->first();
+                
+                $imagePath=null;
+            if(isset($dish_img[$i])){
 
-            $img = $dish_img[$i];
+                $dishImgPath = $dish_img[$i];
+    
+                $imgContent = file_get_contents($dishImgPath);              
+                $newImagePath = storage_path('app/public/uploads/images');             
+                $newImageName = rand(1000, 9999).'-'.rand(1000, 9999).'-'.rand(1000, 9999).'.png';             
+                $fullNewImagePath = $newImagePath.'/'.$newImageName;              
+                file_put_contents($fullNewImagePath, $imgContent); 
+                
+                $imagePath='uploads/images/'.$newImageName;
+            }
+
+            
 
             $name = $dish_name[$i];
 
@@ -98,7 +117,7 @@ class DishSeeder extends Seeder
  
                 'available' => fake()->boolean(),
 
-                'image' => $img
+                'image' =>$imagePath ,
                 
             ]);
             
