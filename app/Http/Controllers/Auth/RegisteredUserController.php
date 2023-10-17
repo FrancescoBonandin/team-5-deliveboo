@@ -46,6 +46,25 @@ class RegisteredUserController extends Controller
             'categories' => 'nullable|array',
             'categories.*'=>'exists:categories,id',
 
+        ],[
+            'name.required' => 'Il campo Nome è obbligatorio.',
+            'name.max' => 'Il campo Nome non può superare i 255 caratteri.',
+            'email.required' => 'Il campo Email è obbligatorio.',
+            'email.email' => 'Il campo Email deve essere un indirizzo email valido.',
+            'email.max' => 'Il campo Email non può superare i 319 caratteri.',
+            'email.unique' => 'L\'indirizzo email specificato è già in uso.',
+            'password.required' => 'Il campo Password è obbligatorio.',
+            'password.confirmed' => 'La conferma della password non corrisponde.',
+            'restaurant_name.required' => 'Il campo Nome del ristorante è obbligatorio.',
+            'restaurant_name.max' => 'Il campo Nome del ristorante non può superare i 255 caratteri.',
+            'address.required' => 'Il campo Indirizzo è obbligatorio.',
+            'address.max' => 'Il campo Indirizzo non può superare i 255 caratteri.',
+            'image.image' => 'L\'immagine deve essere un file di immagine valido.',
+            'p_iva.required' => 'Il campo Partita IVA è obbligatorio.',
+            'p_iva.min' => 'Il campo Partita IVA deve contenere almeno 11 caratteri.',
+            'p_iva.max' => 'Il campo Partita IVA non può superare 11 caratteri.',
+            'categories.*.exists' => 'Una delle categorie selezionate non esiste nel sistema.',
+            
         ]);
 
         $user = User::create([

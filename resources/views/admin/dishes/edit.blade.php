@@ -94,8 +94,8 @@
       @error('image')
       <div class="alert alert-danger">
         {{$message}}
-        @enderror
       </div>
+     @enderror
 
 <!-- Radio button disponibile -->
 
