@@ -123,7 +123,7 @@
 
                                         <div class="col-xs-12">
 
-                                            <img src="{{$dish['image']}}" class="foto-frame" alt="...">
+                                            <img src="{{asset('/storage/'.$dish['image'])}}" class="foto-frame" alt="...">
 
                                         </div>
 
@@ -227,7 +227,7 @@
 
                                     <div class="col-xs-12 m-2">
 
-                                        <img src="{{$dish['image']}}" class="foto-frame" alt="...">
+                                        <img src="{{asset('/storage/'.$dish['image'])}}" class="foto-frame" alt="...">
 
                                     </div>
 
