@@ -3,158 +3,274 @@
 @section('page-title', 'Orders')
 
 @section('main-content')
-    <div class="row">
-        <div class="col">
-            <div class="card justify-content-center">
 
-                <h1 class="card-title text-center">
-                    I tuoi ordini
-                </h1>
-               
-            </div>
-        </div>
+<div class="w-100"> 
+
+    @if ( count(Auth()->user()->restaurant->orders->toArray()) > 0)
         
-        <div class="row">
-                
-            <div class="col">
+    <div id="carouselExample" class="carousel slide light-bg-card p-2 m-3 custom-shadow">
 
-                @if (count(Auth()->user()->restaurant->orders)==0)
+        <div
 
-                    <h2>
-                        Nessun ordine   
-                    </h2>
-                        
-                @else
+        @if (count(Auth()->user()->restaurant->orders->toArray()) > 10)
 
-                @foreach (Auth()->user()->restaurant->orders as $order)
+        class="counter text-bg-light counter-r"
 
-                    <div class="card accordion ">
+        @elseif(count(Auth()->user()->restaurant->orders->toArray()) < 5 )
 
-                        
-                        <div class="accordion-item">
+        class="counter text-bg-light"
 
-                            <div class="accordion-header" id="heading{{$loop->index}}">
+        @else
 
-                                <div class='card-title rowaccordion-header' id="heading{{$loop->index}}">
+        class="counter text-bg-light counter-y"
+            
+        @endif
 
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$loop->index}}" aria-expanded="true" aria-controls="collapse{{$loop->index}}">
-                                        
-                                        <h4 class='col'>
-                                            Cliente: {{$order->name}} {{$order->last_name}}
-                                        </h4>
-                
-                                        <h4 class='col'>
-                                            Num.Ordine: {{$order->id}}
-                                        </h4>
+        >
 
-                                    </button>
-                                
-                                </div>
+            {{count(Auth()->user()->restaurant->orders->toArray())}}
+
+        </div>
+
+        <div class="carousel-inner">
+
+            @for ($i = 0; $i < count(Auth()->user()->restaurant->orders->toArray()); $i++)
+
+            @if ($i == 0)
+
+            {{-- ------------------------------------------ --}}
+                <div class="carousel-item active ">
+                    
+                    <div class="d-flex justify-content-center flex-wrap">
+
+                        <div class="p-2 col-lg-3 col-md-12 col-sm-12">
+
+                            <div class="my-1 mt-0 primary-bg-card p-2">
+
+                                <h3>nome</h3>
+
+                                <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['name'] }}</span>
 
                             </div>
 
-                            <div id="collapse{{$loop->index}}" class="accordion-collapse collapse"  data-bs-parent="#accordionExample">
-                                
+                            <div class="my-1 primary-bg-card p-2">
 
-                                <div class='card-body accordion-body'>
-        
-                                    @forelse ($order->dishes as $dish)
-                                    <div class='card'>
+                                <h3>cognome</h3>
 
-                                        <div class="card-body row">
-            
-                                            <div class="col-2">
-                                                <img class="img-fluid" src="{{$dish->image}}" alt="">
-                                            </div>
-            
-                                            <div class="col">
-            
-                                                <h3>
-        
-                                                    <span>
-                                                    
-                                                        {{$dish->name}} 
-        
-                                                    </span>
-                                            
-                                                    <span>
-                                                        x {{$dish->pivot->quantity}}
-                                                    </span>
-        
-                                                </h3>
-        
-                                                <h4>
-                                                    Ingredients: {{$dish->ingredients}}
-                                                </h4>
-        
-                                                <h4>
-                                                    Description: {{$dish->description}}
-                                                </h4>
-        
-                                                <h4>
-        
-                                                <span>Partial Price:</span>
-                                                
-                                                    @if(isset(explode('.',$dish->price*$dish->pivot->quantity)[1]) && count(str_split(explode('.',$dish->price*$dish->pivot->quantity)[1]),1)==1)
+                                <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['last_name'] }}</span>
 
-                                                        {{ str_replace('.',',', $dish->price*$dish->pivot->quantity).'0';}}
+                            </div>
 
-                                                    @elseif (!isset(explode('.',$dish->price*$dish->pivot->quantity)[1]) || count(str_split(explode('.',$dish->price*$dish->pivot->quantity)[1]),1)==0) 
+                            <div class="my-1 primary-bg-card p-2">
 
-                                                        {{ str_replace('.',',', $dish->price*$dish->pivot->quantity).'00';}}
+                                <h3>indirizzo</h3>
 
-                                                    @else
+                                <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['address'] }}</span>
 
-                                                        {{ str_replace('.',',', $dish->price*$dish->pivot->quantity);}}
+                            </div>
 
-                                                    @endif
-                                               
-                                                <span>€</span>    
-        
-                                                </h4>
-        
-                                            </div>
-            
-                                            
-                                        </div>
+                            <div class="my-1 primary-bg-card p-2">
 
-                                    </div>
+                                <h3>telefono</h3>
 
-                                    @if ($loop->last)
-                                        
-                                        <div class="row">
-                
-                                            <h4 class='col '>
-                                                Address:{{$order->address}}
-                                            </h4>
-                    
-                                            <h4 class='col '>
-                                                Total Price:{{str_replace('.',',',$order->total_price)}}€
-                                            </h4>
-                                            
-                                        </div>
-                                        
-                                    @endif
+                                <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['phone_number'] }}</span>
 
-                                    @empty
-                                    nessun piatto associato
-                                    @endforelse
-                                        
+                            </div>
 
+                            <div class="my-1 primary-bg-card p-2">
+
+                                <h3>totale</h3>
+
+                                <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['total_price'] }} &euro;</span>
 
                             </div>
 
                         </div>
 
+                        <div class="col-lg-9 col-md-12 col-sm-12 display-foto-container">
+
+                            @for ($index = 0; $index < count(Auth()->user()->restaurant->orders[$i]->dishes->toArray()); $index++) 
+
+                                @php
+
+                                $dishes = Auth()->user()->restaurant->orders[$i]->dishes->toArray()
+                                
+                                @endphp
+
+                                @for ($index = 0; $index < count($dishes); $index++) 
+
+                                    @php
+
+                                    $dish = $dishes[$index]
+                                    
+                                    @endphp
+
+                                    <div class="w-100 primary-bg-card p-2 my-2 d-flex justify-content-center flex-wrap">
+
+                                        <div class="counter-frame">
+
+                                            <span class="position-absolute top-50 start-50 translate-middle">{{$index+1}}</span>
+
+                                        </div>
+
+                                        <div class="col d-flex justify-content-around">
+
+                                            <h4 class="align-self-center m-2 text-capitalize">{{$dish['name']}}</h4>
+
+                                            <h5 class="align-self-center m-2">{{$dish['price']}} &euro;</h5>
+
+                                        </div>
+
+                                        <div class="col-xs-12">
+
+                                            <img src="{{$dish['image']}}" class="foto-frame" alt="...">
+
+                                        </div>
+
+                                    </div>
+
+                                @endfor    
+
+                            @endfor 
+
+                        </div>
+
                     </div>
+
+                </div> 
+
+            @else   
+
+             {{-- ------------------------------------------ --}}
+
+            <div class="carousel-item">
+
+                <div class="d-flex justify-content-center flex-wrap">
+
+                    <div class="p-2 col-lg-3 col-md-12 col-sm-12">
+
+                        <div class="my-1 mt-0 primary-bg-card p-2">
+
+                            <h3>nome</h3>
+
+                            <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['name'] }}</span>
+
+                        </div>
+
+                        <div class="my-1 primary-bg-card p-2">
+
+                            <h3>cognome</h3>
+
+                            <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['last_name'] }}</span>
+
+                        </div>
+
+                        <div class="my-1 primary-bg-card p-2">
+
+                            <h3>indirizzo</h3>
+
+                            <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['address'] }}</span>
+
+                        </div>
+
+                        <div class="my-1 primary-bg-card p-2">
+
+                            <h3>telefono</h3>
+
+                            <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['phone_number'] }}</span>
+
+                        </div>
+
+                        <div class="my-1 primary-bg-card p-2">
+
+                            <h3>totale</h3>
+
+                            <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['total_price'] }} &euro;</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-9 col-md-12 col-sm-12 display-foto-container">
+
+                        @for ($index = 0; $index < count(Auth()->user()->restaurant->orders[$i]->dishes->toArray()); $index++) 
+
+                            @php
+
+                            $dishes = Auth()->user()->restaurant->orders[$i]->dishes->toArray()
+                            
+                            @endphp
+
+                            @for ($index = 0; $index < count($dishes); $index++) 
+
+                                @php
+
+                                $dish = $dishes[$index]
+                                
+                                @endphp
+
+                                <div class="w-100 d-flex primary-bg-card p-2 my-2 justify-content-center flex-wrap">
+
+                                    <div class="counter-frame">
+
+                                       <span class="position-absolute top-50 start-50 translate-middle">{{$index+1}}</span> 
+
+                                    </div>
+
+                                    <div class="col d-flex justify-content-around">
+
+                                        <h4 class="align-self-center m-2 text-capitalize">{{$dish['name']}}</h4>
+
+                                        <h5 class="align-self-center m-2">{{$dish['price']}} &euro;</h5>
+
+                                    </div>
+
+                                    <div class="col-xs-12 m-2">
+
+                                        <img src="{{$dish['image']}}" class="foto-frame" alt="...">
+
+                                    </div>
+
+                                </div>
+
+                            @endfor    
+
+                        @endfor 
+
+                    </div>
+
+                </div>
+
+            </div> 
                 
-                @endforeach
-                    
-                @endif
-                
-            </div>
+
+            @endif
+
+            @endfor
             
         </div>
 
+        <button class="carousel-control-prev button-l " type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+
+          <span class="visually-hidden">Previous</span>
+
+        </button>
+
+        <button class="carousel-control-next button-r" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+
+          <span class="visually-hidden">Next</span>
+
+        </button>
+
+    </div>
+
+    @else  
+
+
+        nessun ordine 
+
+    
+
+    @endif
  
 @endsection
