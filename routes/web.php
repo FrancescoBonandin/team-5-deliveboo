@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DishController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Middleware\RestrictAccess;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,11 @@ use App\Http\Controllers\Admin\OrderController;
 */
 
 Route::get('/', function () {
+    if(Auth::id())
+    {
+        return view('admin.dashboard');
+    }
+
     return view('auth.login');
 });
 

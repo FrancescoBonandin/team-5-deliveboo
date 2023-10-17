@@ -74,8 +74,6 @@
         @if($dish->image)
             @if ($dish->image)
                 <img src="{{asset('/storage/'.$dish->image)}}" alt="{{$dish->name}}" class="w-25">
-            @else
-                
             @endif
                 
         <div> 

@@ -11,6 +11,7 @@ use App\Http\Requests\UpdateDishRequest;
 
 // Helpers
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class DishController extends Controller
 {
@@ -19,9 +20,8 @@ class DishController extends Controller
      */
     public function returnView() {
 
-
+        
         return view('admin.dishes.restaurant-dishes');
-
     }
 
     /**
@@ -37,6 +37,7 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
+
         $data=$request->validated();
 
 
@@ -55,6 +56,7 @@ class DishController extends Controller
             'image'=>$dishImage,
             'restaurant_id'=>$request->user()->restaurant->id,
         ]);
+
         return redirect()->route('dashboard');
     }
 
@@ -63,6 +65,11 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
+        if($dish->restaurant->user_id != Auth::id())
+        {
+            return back();
+        }
+
         return view('admin.dishes.show', compact('dish'));
     }
 
@@ -71,6 +78,11 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
+        if($dish->restaurant->user_id != Auth::id())
+        {
+            return back();
+        }
+
         return view('admin.dishes.edit', compact('dish'));
     }
 
@@ -79,6 +91,11 @@ class DishController extends Controller
      */
     public function update(UpdateDishRequest $request, Dish $dish)
     {
+        if($dish->restaurant->user_id != Auth::id())
+        {
+            return back();
+        }
+
         $data=$request->validated();
 
         $dishImage = $dish->image;
@@ -114,6 +131,12 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
+
+        if($dish->restaurant->user_id != Auth::id())
+        {
+            return back();
+        }
+        
         if ($dish->image) {
             Storage::delete($dish->image);
         }

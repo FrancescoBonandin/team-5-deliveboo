@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 // Models
 use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -22,9 +23,12 @@ class OrderController extends Controller
 
     }
 
-    public function destroy(string $id) {
+    public function destroy(Order $order) {
 
-        $order = Order::findOrFail($id);
+        if($order->restaurant->user_id != Auth::id())
+        {
+            return back();
+        }
 
         $order->delete();
 
