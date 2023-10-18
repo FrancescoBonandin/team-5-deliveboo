@@ -11,6 +11,8 @@
     @csrf
     @method('PUT')
 
+<!-- Input nome del piatto -->
+
     <div class="mb-3">
         <label for="inputName" class="form-label">Nome del piatto</label>
         <span class="text-danger">*</span>
@@ -39,7 +41,7 @@
 
 <!-- Input descrizione piatto -->
 
-    <div class="mb-3 container-sm">
+    <div class="mb-3">
         <label for="inputDescription" class="form-label" >Descrizione del piatto</label>
         <span class="text-danger">*</span>
         <textarea class="form-control @error('description') is-invalid @enderror" required placeholder="Inserisci la descrizione del tuo piatto.." id="inputDescription" style="height: 100px" 
@@ -53,7 +55,7 @@
 
 <!-- Input prezzo piatto -->
 
-    <div class="mb-3 container-sm">
+    <div class="mb-3">
         <label for="inputprice" class="form-label">Prezzo del piatto</label>
         <span class="text-danger">*</span>
         <input type="number" class="form-control @error('price') is-invalid @enderror" required id="inputprice" name="price" min="1" max="99.99" step=".01"
@@ -67,37 +69,42 @@
 
 <!-- Input immagine piatto -->
 
-    <div class="container-sm">
       <label for="image" class="form-label" >Immagine del piatto</label>
-    </div>
     <div class="container-sm"> 
+
+    <!-- Se l'immagine è già presente la mostra -->
+
         @if($dish->image)
             @if ($dish->image)
                 <img src="{{asset('/storage/'.$dish->image)}}" alt="{{$dish->name}}" class="w-25">
-            @endif
-                
-        <div> 
+            @endif  
+
+    <!-- Se l'immagine è presente mostra il tasto di cancellazione -->
+
         <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="1" id="remove_image" name="remove_image">
-          <label class="form-check-label" for="remove_image">
+            <input class="form-check-input" type="checkbox" value="1" id="remove_image" name="remove_image">
+            <label class="form-check-label" for="remove_image">
             Cancella Immagine
-        </label>
+            </label>
         </div>
         @endif
-      <div class="container-sm">
-      <label for="image" class="form-label" >Inserisci immagine</label>
-      </div>
-      <div class="input-group mb-3 container-sm">
-      <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" accept="image/*">
-      @error('image')
-      <div class="alert alert-danger">
-        {{$message}}
-      </div>
+
+        <!-- Se l'immagine non è presente input di inserimento immagine -->
+        
+        <label for="image" class="form-label" >Inserisci immagine</label>
+        <div class="input-group mb-3">
+            <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" accept="image/*">
+            @error('image')
+            <div class="alert alert-danger">
+                {{$message}}
+            </div>
+        </div>
+    </div>
      @enderror
 
 <!-- Radio button disponibile -->
 
-<div class="mb-3 container-sm">
+    <div class="mb-3 container-sm">
         <label class="form-label d-block">Disponibilità</label>
         <div class="form-check form-check-inline">
             <label for="available">Disponibile</label>
@@ -117,9 +124,7 @@
 
 <!-- Button submit Add -->
 
-        <div class="container-sm">
-            <button type="submit" class="btn btn-success">Update</button>
-        </div>
+        <button type="submit" class="btn btn-success">Update</button>
 
     </form>
 </div>
