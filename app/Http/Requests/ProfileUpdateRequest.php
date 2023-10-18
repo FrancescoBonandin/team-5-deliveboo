@@ -26,4 +26,22 @@ class ProfileUpdateRequest extends FormRequest
             'categories.*'=>'exists:categories,id',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'name' =>'Il campo Nome è obbligatorio.',
+            'email.required' => 'Il campo Email è obbligatorio.',
+            'email.email' => 'Il campo Email deve essere un indirizzo email valido.',
+            'email.unique' => 'L\'indirizzo email specificato è già in uso.',
+            'restaurant_name'=>'Il campo Nome del ristorante è obbligatorio.',
+            'address'=>'Il campo Indirizzo è obbligatorio.',
+            'image'=>'L\'immagine deve essere un file di immagine valido.',
+            'p_iva.required' => 'Il campo Partita IVA è obbligatorio.',
+            'p_iva.min' => 'Il campo Partita IVA deve contenere almeno 11 caratteri.',
+            'p_iva.max' => 'Il campo Partita IVA non può superare 11 caratteri.',
+            'categories.*'=>'Una delle categorie selezionate non esiste nel sistema.',
+            
+        ];
+    }
 }

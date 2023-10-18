@@ -7,7 +7,7 @@
         <!-- Email Address -->
         <div class="form-floating">
 
-            <input class="form-control rounded-pill px-3 deliveboo-primary-border"  type="email" id="email" name="email" placeholder="email" required>
+            <input class="form-control rounded-pill px-3 deliveboo-primary-border @error('email') is-invalid @enderror"  type="email" id="email" name="email" placeholder="email" required>
 
             <label class="mx-2" for="email">Email <span class="text-danger">*</span></label>
 
@@ -22,7 +22,7 @@
         <!-- Password -->
         <div class="mt-4 form-floating">
 
-            <input class="form-control rounded-pill px-3 deliveboo-primary-border"  type="password" id="password" name="password" placeholder="password" required>
+            <input class="form-control rounded-pill px-3 deliveboo-primary-border @error('password') is-invalid @enderror"  type="password" id="password" name="password" placeholder="password" required>
 
             <label class="mx-2" for="password">Password <span class="text-danger">*</span> </label>
 
