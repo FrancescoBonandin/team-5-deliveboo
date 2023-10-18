@@ -79,11 +79,11 @@
             {{-- restaurant address --}}
             <div class="mt-2 form-floating">
 
-                <input class="form-control rounded-pill px-3 deliveboo-primary-border @error('adress') is-invalid @enderror" type="text" id="address" name="address" placeholder="indirizzo" value="{{old('address')}}" required max="255">
+                <input class="form-control rounded-pill px-3 deliveboo-primary-border @error('address') is-invalid @enderror" type="text" id="address" name="address" placeholder="indirizzo" value="{{old('address')}}" required max="255">
 
                 <label class="form-label mx-2" for="address">Indirizzo</label>
 
-                @error('adress')
+                @error('address')
                 <div class="alert alert-danger">
                     {{$message}}
                 </div>
