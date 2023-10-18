@@ -27,7 +27,7 @@ class CategoryRestaurantSeeder extends Seeder{
         foreach ($restaurants as $restaurant) {
 
             // Attach technologies to projects (you can use attach, sync, or other methods)
-            $restaurant->categories()->sync($categories->random(rand(0,count($categories)))->pluck('id')->toArray());
+            $restaurant->categories()->sync($categories->random(rand(1,count($categories)))->pluck('id')->toArray());
 
         }
        
