@@ -44,10 +44,12 @@ class CategorySeeder extends Seeder
             'pizza',
 
             'hamburger',
+            
+            'altro',
                
         ];
 
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 11; $i++) { 
 
             $random_categories = $restaurant_categories[$i];
 
