@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 
 @section('main-content')
-    <form method="POST" action="{{ route('register') }}" enctype='multipart/form-data' class="container d-flex w-700px justify-content-center flex-wrap light-bg-card p-2 m-2 custom-shadow">
+    <form method="POST" action="{{ route('register') }}" enctype='multipart/form-data' class="container d-flex w-700px justify-content-center flex-wrap light-bg-card p-2 m-2 custom-shadow" id="myForm">
 
         @csrf
 
@@ -129,6 +129,7 @@
             <div class="mt-3 mb-3 primary-bg-card p-2">
 
                 <label class="form-label d-block">Categorie <span class="text-danger">*</span></label>
+                <p id="error-message" class="bg-white text-danger rounded"></p>
         
                 @forelse ($categories as $category )
         
@@ -153,7 +154,7 @@
                         @endif
                         
                     >
-        
+
                     <label class="btn btn-outline-light m-2" for="category-{{$category ->id}}">
                     
                         {{$category->category_name}}
@@ -201,7 +202,9 @@
             </div>
 
         </div>
+        
     </form>
     <script src="../../js/script.js"></script>
+    <script src="../../js/register.js"></script>
 
 @endsection
