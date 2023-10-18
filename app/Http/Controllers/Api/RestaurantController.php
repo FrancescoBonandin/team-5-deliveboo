@@ -12,12 +12,25 @@ class RestaurantController extends Controller
 {
     public function index() {
 
-        $restaurants = Restaurant::with('dishes', 'categories')->get();
+        $restaurants = Restaurant::with('categories')->get();
 
         return response()->json([
 
             'restaurants'=>$restaurants
 
         ]);
+    }
+
+    public function show( string $id){
+
+        $restaurant= Restaurant::with('dishes')->find($id);
+
+        return response()->json([
+
+        
+            'restaurant' => $restaurant,
+
+        ]);
+            
     }
 }
