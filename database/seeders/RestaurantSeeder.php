@@ -12,6 +12,8 @@ use App\Models\User;
 
 use Illuminate\Database\Seeder;
 
+use Illuminate\Support\Facades\Storage;
+
 class RestaurantSeeder extends Seeder
 {
     /**
@@ -24,6 +26,9 @@ class RestaurantSeeder extends Seeder
             Restaurant::truncate();
 
         });
+
+        storage::deleteDirectory('uploads/restaurant-images/');
+        storage::makeDirectory('uploads/restaurant-images/');
 
         $restaurant_img = [ 
 
@@ -55,17 +60,17 @@ class RestaurantSeeder extends Seeder
 
             $random_img = $restaurant_img[$i];
 
-            if(isset($random_img[$i])){
+            if(isset($random_img)){
 
-                $dishImgPath = $random_img[$i];
+                $imagePath = $random_img;
     
-                $imgContent = file_get_contents($dishImgPath);              
-                $newImagePath = storage_path('app/public/uploads/images');             
+                $imgContent = file_get_contents($imagePath);              
+                $newImagePath = storage_path('app/public/uploads/restaurant-images');             
                 $newImageName = rand(1000, 9999).'-'.rand(1000, 9999).'-'.rand(1000, 9999).'.png';             
                 $fullNewImagePath = $newImagePath.'/'.$newImageName;              
                 file_put_contents($fullNewImagePath, $imgContent); 
                 
-                $imagePath='uploads/images/'.$newImageName;
+                $imagePath='uploads/restaurant-images/'.$newImageName;
             }
             
             Restaurant::create([
