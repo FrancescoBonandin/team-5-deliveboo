@@ -16,13 +16,13 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $categories=Category::all();
 
-        if($request->user->id != Auth::id())
+        if($request->user()->id != Auth::id())
         {
-            return back();
+            return view('profile.edit',['user' => Auth::user(),'categories'=>$categories,]);
         }
 
-        $categories=Category::all();
 
         return view('profile.edit', [
             'user' => $request->user(),
@@ -36,7 +36,7 @@ class ProfileController extends Controller
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
 
-        if($request->user->id != Auth::id())
+        if($request->user()->id != Auth::id())
         {
             return back();
         }
@@ -65,7 +65,7 @@ class ProfileController extends Controller
             $request->user()->restaurant->categories()->detach();
         }
 
-        return redirect()->route('dashboard')->with('status', 'profile-updated');
+        return redirect()->back()->with('status', 'profile-updated');
     }
 
     /**
@@ -73,7 +73,7 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        if($request->user->id != Auth::id())
+        if($request->user()->id != Auth::id())
         {
             return back();
         }
