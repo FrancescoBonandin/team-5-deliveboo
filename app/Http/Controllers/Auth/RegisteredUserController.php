@@ -64,7 +64,7 @@ class RegisteredUserController extends Controller
             'p_iva.required' => 'Il campo Partita IVA è obbligatorio.',
             'p_iva.min' => 'Il campo Partita IVA deve contenere almeno 11 caratteri.',
             'p_iva.max' => 'Il campo Partita IVA non può superare 11 caratteri.',
-            'categories'=> 'Il campo categoria è obbligatorio',
+            'categories'=> 'Il campo Categorie è obbligatorio',
             
             
         ]);

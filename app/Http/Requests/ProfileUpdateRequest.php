@@ -23,7 +23,7 @@ class ProfileUpdateRequest extends FormRequest
             'image'=>'nullable|image',
             'remove_image'=>['boolean'],
             'p_iva'=>['required','min:11','max:11'],
-            'categories' => 'nullable|array',
+            'categories' => 'required|array',
             'categories.*'=>'exists:categories,id',
         ];
     }
@@ -40,7 +40,7 @@ class ProfileUpdateRequest extends FormRequest
             'p_iva.required' => 'Il campo Partita IVA è obbligatorio.',
             'p_iva.min' => 'Il campo Partita IVA deve contenere almeno 11 caratteri.',
             'p_iva.max' => 'Il campo Partita IVA non può superare 11 caratteri.',
-            'categories.*'=>'Una delle categorie selezionate non esiste nel sistema.',
+            'categories'=>'Il campo Categorie è obbligato.',
             
             
         ];

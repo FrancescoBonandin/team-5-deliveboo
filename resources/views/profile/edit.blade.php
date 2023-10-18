@@ -147,7 +147,7 @@
                                 
                                     type="checkbox" 
                         
-                                    class="btn-check @error('categories.*') is-invalid @enderror"
+                                    class="btn-check @error('categories') is-invalid @enderror"
                         
                                     id="category-{{$category ->id}}"
                         
@@ -169,11 +169,7 @@
                         
                                 </label>
                                 
-                                @error('categories.*')
-                                <div class="alert alert-danger">
-                                    {{$message}}
-                                </div>
-                                @enderror
+                                
                                 
                             </div>
                                     
@@ -186,6 +182,12 @@
                             </div>
                                 
                             @endforelse
+
+                            @error('categories')
+                                <div class="alert alert-danger">
+                                    {{$message}}
+                                </div>
+                            @enderror
                         
                         </div>
 
