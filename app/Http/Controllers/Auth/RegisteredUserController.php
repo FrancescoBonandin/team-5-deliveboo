@@ -44,7 +44,7 @@ class RegisteredUserController extends Controller
             'address'=>['required', 'max:255'],
             'image'=>['nullable','image'],
             'p_iva'=>['required','min:11','max:11'],
-            'categories' => 'nullable|array',
+            'categories' => 'required|array',
             'categories.*'=>'exists:categories,id',
 
         ],[
@@ -64,7 +64,8 @@ class RegisteredUserController extends Controller
             'p_iva.required' => 'Il campo Partita IVA è obbligatorio.',
             'p_iva.min' => 'Il campo Partita IVA deve contenere almeno 11 caratteri.',
             'p_iva.max' => 'Il campo Partita IVA non può superare 11 caratteri.',
-            'categories.*.exists' => 'Una delle categorie selezionate non esiste nel sistema.',
+            'categories'=> 'Il campo categoria è obbligatorio',
+            
             
         ]);
 
