@@ -40,7 +40,7 @@
 
 <!-- Input descrizione piatto -->
 
-    <div class="mb-3 container-sm">
+    <div class="mb-3">
         <label for="inputDescription" class="form-label" >Descrizione del piatto</label>
         <span class="text-danger">*</span>
         <textarea class="form-control @error('description') is-invalid @enderror" placeholder="Inserisci la descrizione del tuo piatto.." id="inputDescription" style="height: 100px" 
@@ -54,7 +54,7 @@
 
 <!-- Input prezzo piatto -->
 
-    <div class="mb-3 container-sm">
+    <div class="mb-3">
         <label for="inputprice" class="form-label">Prezzo del piatto</label>
         <span class="text-danger">*</span>
         <input type="number" class="form-control @error('price') is-invalid @enderror" required id="inputprice" name="price" min="1" max="99.99" step=".01"
@@ -69,11 +69,9 @@
 
         <!-- Input immagine piatto -->
 
-    <div class="container-sm">
       <label for="image" class="form-label" >Immagine del piatto</label>
-    </div>
 
-      <div class="input-group mb-3 container-sm">
+      <div class="input-group mb-3">
             <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" accept="image/*">
             @error('image')
             <div class="alert alert-danger">
@@ -84,7 +82,7 @@
 
         <!-- Radio button disponibile -->
 
-    <div class="mb-3 container-sm">
+    <div class="mb-3">
 
         <label class="form-label d-block">Disponibilità</label>
         <div class="form-check form-check-inline">
@@ -102,10 +100,8 @@
     </div>
 
         <!-- Button submit Add -->
-
-    <div class="container-sm">
+  
       <button type="submit" class="btn btn-success">Add</button>
-    </div>
 
     </form>
 </div>
