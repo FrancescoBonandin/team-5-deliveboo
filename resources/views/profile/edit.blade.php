@@ -67,15 +67,34 @@
                             </div>
                 
                         </div>
+
+                        @if(auth()->user()->restaurant->image)
+                            <div class=" ">  
+                               @if (auth()->user()->restaurant->image)
+                                   <img class="img-fluid" src="{{asset('/storage/'.auth()->user()->restaurant->image)}}" alt="{{auth()->user()->restaurant->name}}" class="w-25">
+                               @endif
+                               
+                       
+   
+                               <div class="form-check">
+                                   <input class="form-check-input" type="checkbox" value="1" id="remove_image" name="remove_image">
+                                       <label class="form-check-label" for="remove_image">
+                                           Cancella Immagine
+                                       </label>
+                               </div>
+
+                            </div> 
+                        @endif
                 
                         <div class="p-2 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            
                             
                             {{-- restaurant image --}}
                             <div class="mb-2 primary-bg-card p-2">
                 
                                 <label for="image" class="form-label">Immagine Ristorante</label>
                         
-                                <input class="form-control" type="file" id="image" name="image" accept="image/" value="{{old('image', auth()->user()->restaurant->image)}}">
+                                <input class="form-control" type="file" id="image" name="image" accept="image/*" value="{{old('image', auth()->user()->restaurant->image)}}">
 
                             </div>
                 

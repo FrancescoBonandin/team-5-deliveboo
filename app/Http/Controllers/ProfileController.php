@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\Category;
+
+use Illuminate\Support\Facades\Storage;
 class ProfileController extends Controller
 {
     /**
@@ -46,12 +48,28 @@ class ProfileController extends Controller
         // if ($request->user()->isDirty('email')) {
         //     $request->user()->email_verified_at = null;
         // }
+        $restaurantImage=null;
+        
+        if (isset($request->validated()['image'])) {
+            if (auth()->user()->restaurant->image) {
+                Storage::delete(auth()->user()->restaurant->image);
+            }
+
+            $restaurantImage = Storage::put('uploads/images', $request->validated()['image']);
+        }
+        else if (isset($request->validated()['remove_image'])) {
+            if (auth()->user()->restaurant->image) {
+                Storage::delete(auth()->user()->restaurant->image);
+            }
+
+            $restaurantImage = null;
+        }
 
         $request->user()->restaurant->update([
 
             'restaurant_name'=>$request->restaurant_name,
             'address'=> $request->address,
-            'image'=>$request->image,
+            'image'=>$restaurantImage,
             'p_iva'=>$request->p_iva,
         ]
         );
@@ -65,7 +83,8 @@ class ProfileController extends Controller
             $request->user()->restaurant->categories()->detach();
         }
 
-        return redirect()->back()->with('status', 'profile-updated');
+        return redirect()->back();
+        // ->with('status', 'profile-updated');
     }
 
     /**

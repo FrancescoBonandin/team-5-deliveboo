@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
 
 class RegisteredUserController extends Controller
 {
@@ -25,7 +26,7 @@ class RegisteredUserController extends Controller
 
         $categories=Category::all();
 
-        return view('auth.register',compact('categories'));
+        return view('auth.register', compact('categories'));
     }
 
     /**
@@ -73,12 +74,17 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        $restaurantImage = null;
+        if (isset($request->image)) {
+            $restaurantImage = Storage::put('uploads/images', $request->image);
+        }
+
 
         $restaurant = Restaurant::Create([
             'user_id'=>$user->id,
             'restaurant_name'=>$request->restaurant_name,
             'address'=> $request->address,
-            'image'=>$request->image,
+            'image'=>$restaurantImage,
             'p_iva'=>$request->p_iva,
 
         ]);

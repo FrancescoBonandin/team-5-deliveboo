@@ -55,6 +55,19 @@ class RestaurantSeeder extends Seeder
 
             $random_img = $restaurant_img[$i];
 
+            if(isset($random_img[$i])){
+
+                $dishImgPath = $random_img[$i];
+    
+                $imgContent = file_get_contents($dishImgPath);              
+                $newImagePath = storage_path('app/public/uploads/images');             
+                $newImageName = rand(1000, 9999).'-'.rand(1000, 9999).'-'.rand(1000, 9999).'.png';             
+                $fullNewImagePath = $newImagePath.'/'.$newImageName;              
+                file_put_contents($fullNewImagePath, $imgContent); 
+                
+                $imagePath='uploads/images/'.$newImageName;
+            }
+            
             Restaurant::create([
 
                 'restaurant_name' => fake()->company(),
@@ -63,7 +76,7 @@ class RestaurantSeeder extends Seeder
                 
                 'address' =>  fake()->address(),
 
-                'image' => $random_img,
+                'image' => $imagePath,
                 
                 'p_iva' => fake()->isbn10(),
                 
