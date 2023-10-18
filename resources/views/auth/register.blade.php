@@ -15,7 +15,7 @@
                 <label class="form-label mx-2" for="name">Name</label>
 
                 @error('name')
-                <div class="alert alert-danger">
+                <div class="alert alert-danger m-1">
                     {{$message}}
                 </div>
                 @enderror
@@ -30,7 +30,7 @@
                 <label class="form-label mx-2" for="email">Email</label>
 
                 @error('email')
-                <div class="alert alert-danger">
+                <div class="alert alert-danger m-1">
                     {{$message}}
                 </div>
                 @enderror
@@ -45,7 +45,7 @@
                 <label class="form-label mx-2" for="password">Password</label>
 
                 @error('password')
-                <div class="alert alert-danger">
+                <div class="alert alert-danger m-1">
                     {{$message}}
                 </div>
                 @enderror
@@ -69,7 +69,7 @@
                 <label class="form-label mx-2" for="restaurant_name">Nome Ristorante</label>
 
                 @error('restaurant_name')
-                <div class="alert alert-danger">
+                <div class="alert alert-danger m-1">
                     {{$message}}
                 </div>
                 @enderror
@@ -84,7 +84,7 @@
                 <label class="form-label mx-2" for="address">Indirizzo</label>
 
                 @error('adress')
-                <div class="alert alert-danger">
+                <div class="alert alert-danger m-1">
                     {{$message}}
                 </div>
                 @enderror
@@ -99,7 +99,7 @@
                 <label class="form-label mx-2" for="p_iva">Partita iva</label>
 
                 @error('p_iva')
-                <div class="alert alert-danger">
+                <div class="alert alert-danger m-1">
                     {{$message}}
                 </div>
                 @enderror
@@ -118,7 +118,7 @@
                 <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" accept="image/" value="{{old('image')}}">
                 
                 @error('image')
-                <div class="alert alert-danger">
+                <div class="alert alert-danger m-1">
                     {{$message}}
                 </div>
                 @enderror
@@ -161,7 +161,7 @@
                     </label>
 
                     @error('categories.*')
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger m-1">
                         {{$message}}
                     </div>
                     @enderror

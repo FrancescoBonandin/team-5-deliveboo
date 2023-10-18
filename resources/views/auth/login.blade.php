@@ -12,7 +12,7 @@
             <label class="mx-2" for="email">Email <span class="text-danger">*</span></label>
 
             @error('email')
-            <div class="alert alert-danger">
+            <div class="alert alert-danger m-1">
                 {{$message}}
             </div>
             @enderror
@@ -27,7 +27,7 @@
             <label class="mx-2" for="password">Password <span class="text-danger">*</span> </label>
 
             @error('password')
-            <div class="alert alert-danger">
+            <div class="alert alert-danger m-1">
                 {{$message}}
             </div>
             @enderror
