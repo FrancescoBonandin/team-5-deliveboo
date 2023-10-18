@@ -159,9 +159,15 @@
                         
                                     checked
                                         
+                                    @elseif ($user->restaurant->categories->contains($category))
+
+                                        checked
+                                        
                                     @endif
                                     
                                     >
+
+                                
                         
                                 <label class="btn btn-outline-light m-2" for="category-{{$category ->id}}">
                                 
