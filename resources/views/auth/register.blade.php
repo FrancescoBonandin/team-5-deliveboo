@@ -12,7 +12,7 @@
 
                 <input class="form-control rounded-pill px-3 deliveboo-primary-border @error('name') is-invalid @enderror" type="text" id="name" name="name" placeholder="nome" value="{{old('name')}}" required maxlength='255'>
 
-                <label class="form-label mx-2" for="name">Name</label>
+                <label class="form-label mx-2" for="name">Name <span class="text-danger">*</span></label>
 
                 @error('name')
                 <div class="alert alert-danger">
@@ -27,7 +27,7 @@
 
                 <input class="form-control rounded-pill px-3 deliveboo-primary-border @error('email') is-invalid @enderror" type="email" id="email" name="email" placeholder="email" value="{{old('email')}}" required maxlength='319'>
 
-                <label class="form-label mx-2" for="email">Email</label>
+                <label class="form-label mx-2" for="email">Email <span class="text-danger">*</span></label>
 
                 @error('email')
                 <div class="alert alert-danger">
@@ -42,7 +42,7 @@
 
                 <input class="form-control rounded-pill px-3 deliveboo-primary-border @error('password') is-invalid @enderror" type="password" id="password" name="password" placeholder="password" required minlength='8'>
 
-                <label class="form-label mx-2" for="password">Password</label>
+                <label class="form-label mx-2" for="password">Password <span class="text-danger">*</span></label>
 
                 @error('password')
                 <div class="alert alert-danger">
@@ -57,7 +57,7 @@
 
                 <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="password" id="password_confirmation" name="password_confirmation" placeholder="password" required minlength='8'>
 
-                <label class="form-label mx-2" for="password_confirmation">Conferma Password</label>
+                <label class="form-label mx-2" for="password_confirmation">Conferma Password <span class="text-danger">*</span></label>
 
             </div>
 
@@ -66,7 +66,7 @@
 
                 <input class="form-control rounded-pill px-3 deliveboo-primary-border @error('restaurant_name') is-invalid @enderror" type="text" id="restaurant_name" name="restaurant_name" placeholder="nome ristorante" value="{{old('restaurant_name')}}" required maxlength="255">
 
-                <label class="form-label mx-2" for="restaurant_name">Nome Ristorante</label>
+                <label class="form-label mx-2" for="restaurant_name">Nome Ristorante <span class="text-danger">*</span></label>
 
                 @error('restaurant_name')
                 <div class="alert alert-danger">
@@ -81,7 +81,7 @@
 
                 <input class="form-control rounded-pill px-3 deliveboo-primary-border @error('adress') is-invalid @enderror" type="text" id="address" name="address" placeholder="indirizzo" value="{{old('address')}}" required maxlength="255">
 
-                <label class="form-label mx-2" for="address">Indirizzo</label>
+                <label class="form-label mx-2" for="address">Indirizzo <span class="text-danger">*</span></label>
 
                 @error('address')
                 <div class="alert alert-danger">
@@ -96,7 +96,7 @@
 
                 <input class="form-control rounded-pill px-3 deliveboo-primary-border @error('p_iva') is-invalid @enderror" type="text" id="p_iva" name="p_iva" placeholder="partita iva" value="{{old('p_iva')}}" required minlength="11" maxlength="11">
 
-                <label class="form-label mx-2" for="p_iva">Partita iva</label>
+                <label class="form-label mx-2" for="p_iva">Partita iva <span class="text-danger">*</span></label>
 
                 @error('p_iva')
                 <div class="alert alert-danger">
@@ -128,7 +128,7 @@
             {{-- restaurant categories --}}
             <div class="mt-3 mb-3 primary-bg-card p-2">
 
-                <label class="form-label d-block">Categorie</label>
+                <label class="form-label d-block">Categorie <span class="text-danger">*</span></label>
         
                 @forelse ($categories as $category )
         
