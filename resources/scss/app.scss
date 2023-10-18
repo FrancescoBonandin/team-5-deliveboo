@@ -40,6 +40,14 @@
 
 }
 
+.display-dishes-container{
+
+    max-height: 31.25rem ;
+
+    overflow-y: auto;
+
+}
+
 .foto-frame{
 
     height: 9.375rem;
@@ -50,6 +58,26 @@
 
     border-radius: .3125rem;
 
+}
+
+.sm-foto-frame{
+
+    height: 4.0625rem;
+
+    width: 7.5rem;
+
+    object-fit: cover;
+
+    border-radius: .3125rem;
+
+
+}
+
+.add-button-p{
+
+    position:fixed;
+
+    right:0
 }
 
 .w-50px{
@@ -187,6 +215,7 @@
     object-fit: contain;
 
 }
+
 
 .counter{
 
