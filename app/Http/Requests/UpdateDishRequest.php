@@ -26,7 +26,7 @@ class UpdateDishRequest extends FormRequest
             'name'=>'string|required|max:70',
             'ingredients'=>'string|required',
             'description'=>'string|required',
-            'price'=>'required|regex:/^\d{1,2}\.\d{1,2}$/',
+            'price'=>'required|regex:/^\d{0,2}([,.]\d{0,2})?$/',
             'available'=>'required|boolean',
             'image'=>'nullable|image',
             'restaurant_id'=>'|exists:restaurants,id'
