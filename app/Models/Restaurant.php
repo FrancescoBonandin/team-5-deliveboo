@@ -14,7 +14,8 @@ class Restaurant extends Model
         'restaurant_name',
         'address',
         'image',
-        'p_iva'
+        'p_iva',
+        
     ];
 
     protected $hidden=[
@@ -23,6 +24,18 @@ class Restaurant extends Model
         'p_iva'
 
     ];
+
+    public function getFullImageAttribute() {
+        if($this->image) {
+            return asset('storage/' . $this->image);
+        } return null;
+
+    }
+
+    protected $appends = [
+        'full_image'
+    ];
+
 
     public function user(){
 

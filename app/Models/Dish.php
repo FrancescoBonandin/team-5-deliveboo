@@ -26,6 +26,17 @@ class Dish extends Model
 
     ];
 
+    public function getFullImageAttribute() {
+        if($this->image) {
+            return asset('storage/' . $this->image);
+        } return null;
+
+    }
+
+    protected $appends = [
+        'full_image'
+    ];
+
     public function restaurant(){
 
         return $this->belongsTo(Restaurant::class);
