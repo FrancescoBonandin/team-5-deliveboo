@@ -17,6 +17,13 @@ class Restaurant extends Model
         'p_iva'
     ];
 
+    protected $hidden=[
+        'created_at',
+        'uploaded_at',
+        'p_iva'
+
+    ];
+
     public function user(){
 
         return $this->belongsTo(User::class);

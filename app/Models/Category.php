@@ -10,6 +10,12 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $hidden=[
+        'created_at',
+        'uploaded_at',
+
+    ];
+
     public function restaurants(){
 
         return $this->belongsToMany(Restaurant::class);

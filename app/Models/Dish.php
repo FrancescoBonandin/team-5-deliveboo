@@ -20,6 +20,12 @@ class Dish extends Model
         
     ];
 
+    protected $hidden=[
+        'created_at',
+        'uploaded_at',
+
+    ];
+
     public function restaurant(){
 
         return $this->belongsTo(Restaurant::class);
