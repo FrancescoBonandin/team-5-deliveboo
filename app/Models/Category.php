@@ -12,7 +12,7 @@ class Category extends Model
 
     protected $hidden=[
         'created_at',
-        'uploaded_at',
+        'updated_at',
 
     ];
 
