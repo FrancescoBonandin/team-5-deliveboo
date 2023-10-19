@@ -46,7 +46,7 @@ class RestaurantController extends Controller
         }, '=', count($selectedCategories))
         ->get();
      
-        return response()->json(['restaurant'=>$filteredRestaurants]);
+        return response()->json(['restaurants'=>$filteredRestaurants]);
 
         // return response()->json(['ok'=>'ok']);
     }
