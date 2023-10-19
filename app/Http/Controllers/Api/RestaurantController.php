@@ -34,19 +34,20 @@ class RestaurantController extends Controller
             
     }
      
-    public function filter($selectedCategories) {
+    public function filter(Request $request) {
 
-        $restaurants = Restaurant::all()->with('categories');
-        $filteredRestaurants = $restaurants->categories()
-        ->where(function($selectedCategories, $restaurants){
-            foreach ($restaurants as $restaurant) {
-               // foreach ($selectedCategories as $selectedCategory) {
-                $restaurant->categories()
-                ->wherein('id', $selectedCategories);
-               // }
+        $selectedCategories=$request->input('selectedCategories',[]);
+
+        $filteredRestaurants = Restaurant::with('categories')
+        ->whereHas('categories', function ($query) use ($selectedCategories) {
+            foreach ($selectedCategories as $selectedCategory) {
+                $query->whereIn('id', $selectedCategories);
             }
-            
-        })->get();
+        }, '=', count($selectedCategories))
+        ->get();
+     
         return response()->json(['restaurant'=>$filteredRestaurants]);
+
+        // return response()->json(['ok'=>'ok']);
     }
 }
