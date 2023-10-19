@@ -28,4 +28,4 @@ Route::get('/restaurants/{id}', [RestaurantController::class, 'show']);
 
 Route::get('/categories', [CategoryController::class, 'index']);
 
-Route::get('/filteredRestaurants', [RestaurantController::class, 'filter']);
+Route::get('/filteredRestaurants, {selectedCategories}', [RestaurantController::class, 'filter,']);
