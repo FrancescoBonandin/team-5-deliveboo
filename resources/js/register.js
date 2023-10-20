@@ -1,7 +1,7 @@
 document.getElementById('myForm').addEventListener('submit', function(event) {
         const checkboxes = document.querySelectorAll('input[name="categories[]"]');
         const errorMessage = document.getElementById('error-message');
-        const checked = false;
+        let checked = false;
 
         for (var i = 0; i < checkboxes.length; i++) {
             if (checkboxes[i].checked) {
