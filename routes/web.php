@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DishController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Middleware\RestrictAccess;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,6 +41,7 @@ Route::middleware('auth')
     Route::get('/orders', [OrderController::class,'returnView'])->name('orders.view');
     Route::get('/dishes', [DishController::class,'returnView'])->name('dishes.view');
     Route::delete('/orders', [OrderController::class, 'destroy'])->name('orders');
+    Route::get('/statistics', [RestaurantController::class, 'returnView'])->name('restaurant-statistics');
 });
 
 
