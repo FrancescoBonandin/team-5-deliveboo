@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Schema;
 
 use Illuminate\Database\Seeder;
 
+use function PHPUnit\Framework\isEmpty;
+
 class DishOrderSeeder extends Seeder
 {
     /**
@@ -23,7 +25,7 @@ class DishOrderSeeder extends Seeder
 
         $orders = Order::all();
 
-        $dishes = Dish::all();
+       
 
         foreach($orders as $order){
             // Per ogni ordine cancella i piatti assocciati
@@ -35,17 +37,19 @@ class DishOrderSeeder extends Seeder
             // cicla tutti gli ordini
             $total_price=0;
 
-            foreach ($dishes as $i=>$dish) {
+            $dishes = Dish::where('restaurant_id','=',$order->restaurant_id)->get();
+
+            foreach ($dishes as $dish) {
 
                 // cicla tutti i piatti
 
                 
 
-                if(fake()->boolean(60)){
+                if(fake()->boolean(80)){
 
                     // se è vero(60% prob), aggiungi all'ordine il singolo piatto CON la singola quantità associata
                     $multiplier=rand(1, 10);
-                    $order->dishes()->syncWithPivotValues($dish->id, ['quantity' => $multiplier ],false);
+                    $order->dishes()->syncWithPivotValues($dish->id, ['quantity' => $multiplier ]);
 
 
                     $total_price+=$dish->price*$multiplier;
@@ -54,7 +58,13 @@ class DishOrderSeeder extends Seeder
                 }
                 
             }
+            
             $order->update(['total_price'=>$total_price]);
+            
+            if($order->total_price==0){
+                $order->delete();
+            }
+         
         }
 
     }   

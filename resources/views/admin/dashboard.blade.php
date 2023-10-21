@@ -99,7 +99,7 @@
 
             <div class="col-lg-4 col-sm-12 p-2 hover-trigger">
 
-                <a href="{{route('statistics.view')}}">
+                <a href="{{route('restaurant-statistics')}}">
 
                     <div class="card light-bg-card s-secondary-border-color p-2">
 
