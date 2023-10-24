@@ -14,7 +14,7 @@
 
 <script>
 
-  const data = @json($data); // Converte i dati PHP in JSON
+  const data = @json($dataArray); // Converte i dati PHP in JSON
     
 </script>
 
