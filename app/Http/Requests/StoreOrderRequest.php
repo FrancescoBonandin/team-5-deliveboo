@@ -22,11 +22,8 @@ class StoreOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required',
-            'last_name'=>'required',
-            'address'=>'required',
-            'phone_number'=>'required',
-            'email'=>'required',
+            
         ];
+       
     }
 }

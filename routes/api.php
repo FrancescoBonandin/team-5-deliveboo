@@ -32,3 +32,5 @@ Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/filteredRestaurants', [RestaurantController::class, 'filter']);
 
 Route::post('/orders', [OrderController::class, 'checked']);
+
+Route::post('/orders', [OrderController::class, 'store']);
