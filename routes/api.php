@@ -33,4 +33,4 @@ Route::get('/filteredRestaurants', [RestaurantController::class, 'filter']);
 
 Route::post('/orders', [OrderController::class, 'checked']);
 
-Route::post('/orders', [OrderController::class, 'store']);
+Route::post('/orders/submit', [OrderController::class, 'store']);
