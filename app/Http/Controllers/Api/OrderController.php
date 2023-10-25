@@ -43,7 +43,7 @@ class OrderController extends Controller
     }
 
     public function store(Request  $request) {
-        $orders= $request->validate([
+        $data= $request->validate([
 
             'cart_total_price' => 'required|numeric|min:1.00|regex:/^\d{0,5}([,.]\d{0,2})?$/',
             'cart_products' => 'required|array',
@@ -70,18 +70,28 @@ class OrderController extends Controller
 
         ]);
         
-            $date=Carbon::date();
-            $time=Carbon::time();
+            $date=Carbon::now()->format('Y-m-d');
+            $time=Carbon::now()->format('H:i:s');
 
-        Order::create([
-            'name'=>$orders['name'],
-            'last_name'=>$orders['last_name'],
-            'address'=>$orders['address'],
-            'phone_number'=>$orders['phone_number'],
-            'email'=>$orders['email'],
+        $order=Order::create([
+            'name'=>$data['customer_name'],
+            'last_name'=>$data['customer_last_name'],
+            'address'=>$data['customer_address'],
+            'phone_number'=>$data['customer_phone_number'],
+            'email'=>$data['customer_email'],
             'date'=>$date,
             'time'=>$time,
-            'restauran_id'=>$orders['restaurant_id']
+            'restaurant_id'=>$data['restaurant_id'],
+            'total_price'=>$data['cart_total_price']
+        ]);
+
+        foreach($data['cart_products'] as $product){
+            $order->dishes()->attach($product['id'],['quantity'=>$product['quantity']]);
+        }
+        
+
+        return response()->json([
+            'order'=> 'tutt\'appost'
         ]);
     }
 }
