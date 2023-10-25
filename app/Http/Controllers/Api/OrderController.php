@@ -91,7 +91,7 @@ class OrderController extends Controller
         
 
         return response()->json([
-            'order'=> 'tutt\'appost'
+            'order'=> 'ok'
         ]);
     }
 }
