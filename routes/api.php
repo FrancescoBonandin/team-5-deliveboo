@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\RestaurantController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\OrderController;
 use App\Models\Restaurant;
+use App\Http\Controllers\Api\NewMessageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +35,5 @@ Route::get('/filteredRestaurants', [RestaurantController::class, 'filter']);
 Route::post('/orders', [OrderController::class, 'checked']);
 
 Route::post('/orders/submit', [OrderController::class, 'store']);
+
+Route::post('/orders/checked', [NewMessageController::class, 'store']);
