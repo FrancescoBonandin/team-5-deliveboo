@@ -11,6 +11,7 @@ class NewMessage extends Model
 
     protected $fillable = [
         'name',
+        'last_name',
         'email',
         'message',
 
