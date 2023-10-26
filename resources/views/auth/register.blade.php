@@ -129,6 +129,7 @@
             <div class="mt-3 mb-3 primary-bg-card p-2">
 
                 <label class="form-label d-block">Categorie <span class="text-danger">*</span></label>
+                
                 <p id="error-message" class="bg-white text-danger rounded"></p>
         
                 @forelse ($categories as $category )
@@ -161,8 +162,6 @@
             
                     </label>
 
-
-                
                 </div>
                     
                 @empty
