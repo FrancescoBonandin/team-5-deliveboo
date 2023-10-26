@@ -14,8 +14,11 @@ class Order extends Model
         'last_name',
         'address',
         'phone_number',
+        'date',
+        'time',
         'email',
-        'total_price'
+        'total_price',
+        'restaurant_id'
     ];
 
     protected $hidden=[
