@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use Carbon\Carbon;
+use App\Mail\NewMail;
+use App\Models\NewMessage;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -88,10 +91,18 @@ class OrderController extends Controller
         foreach($data['cart_products'] as $product){
             $order->dishes()->attach($product['id'],['quantity'=>$product['quantity']]);
         }
-        
+
+
+        $newMessage = NewMessage::create(['name'=>$data['customer_name'],
+        'last_name'=>$data['customer_last_name'], 'email'=>$data['customer_email'], 
+        'message'=>'ciao ciao']);
+        Mail::to('boolean@careers.com')->send(new NewMail($newMessage));
+    
 
         return response()->json([
-            'order'=> 'ok'
+            'order'=> 'ok',
         ]);
+
+
     }
 }
