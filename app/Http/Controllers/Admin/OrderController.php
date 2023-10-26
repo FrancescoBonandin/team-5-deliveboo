@@ -27,7 +27,7 @@ class OrderController extends Controller
 
         if($order->restaurant->user_id != Auth::id())
         {
-            return back();
+            return abort(403,'Unauthorized');
         }
 
         $order->delete();
