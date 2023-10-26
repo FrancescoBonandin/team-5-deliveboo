@@ -27,7 +27,7 @@ class OrderSeeder extends Seeder
 
 
 
-        for ($i=0; $i < 30; $i++) { 
+        for ($i=0; $i < 50; $i++) { 
 
             $randomRestaurant = Restaurant::inRandomOrder()->first();
 

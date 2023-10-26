@@ -53,17 +53,37 @@ class DishSeeder extends Seeder
 
             'https://veerji.ca/wp-content/uploads/2022/02/Chicken-Tikka-Masala.jpeg',
 
+            'https://wips.plug.it/cips/buonissimo.org/cms/2019/04/pizza-capricciosa.jpg?w=713&a=c&h=407',
+
+            'https://blog.giallozafferano.it/trasentieriefornelli/wp-content/uploads/2022/03/IMG_0019-1-1536x1024.jpg',
+
+            'https://www.miyosushi.it/wp-content/uploads/2019/08/64.jpg',
+
+            'https://blog.giallozafferano.it/albe/wp-content/uploads/2020/08/2AD4F035-474E-4DF6-9320-F6B693D89AC0.jpg',
+
+            'https://shop.eismann.it/upload/product-detail-theme/it/33055-hamburger-di-razza-chianina-K-20211022.jpg',
+
+            'https://i2.wp.com/lifemadesimplebakes.com/wp-content/uploads/2018/11/Yellow-Coconut-Curry-1.jpg',
+
+            'https://pinchandswirl.com/wp-content/uploads/2022/12/Tuna-Tartare.jpg',
+
+            'https://images.prismic.io/eataly-us/ed3fcec7-7994-426d-a5e4-a24be5a95afd_pizza-recipe-main.jpg?auto=compress,format',
+
+            'https://www.thegunnysack.com/wp-content/uploads/2022/11/Cheese-Fries-Topdown.jpg',
+
+            'https://thecozycook.com/wp-content/uploads/2021/05/Onion-Rings-Recipe-1.1jpg-1.jpg',
+
         ];
 
         $dish_name = [
 
-            'hamburger 1',
+            'hamburger',
 
             'healthy-bowl',
 
             'gamberi alla griglia',
 
-            'pasta-1',
+            'pasta con le zucchine',
 
             'special 1',
 
@@ -75,18 +95,38 @@ class DishSeeder extends Seeder
 
             'juicy meat',
 
-            'chapati and chicken'
+            'chapati and chicken',
+
+            'pizza capricciosa',
+
+            'spaghetti alla piastra',
+
+            'sashimi sake',
+
+            'roastbeef',
+
+            'hamburger di chianina',
+
+            'curry chicken',
+
+            'tuna tartare',
+
+            'pizza margherita',
+
+            'cheese fries',
+
+            'onion rings'
 
         ];
 
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 40; $i++) { 
 
             $randomRestaurant = Restaurant::inRandomOrder()->first();
                 
                 $imagePath=null;
             if(isset($dish_img[$i])){
 
-                $dishImgPath = $dish_img[$i];
+                $dishImgPath = $dish_img[rand(0, count($dish_img))];
     
                 $imgContent = file_get_contents($dishImgPath);              
                 $newImagePath = storage_path('app/public/uploads/images');             
@@ -99,7 +139,7 @@ class DishSeeder extends Seeder
 
             
 
-            $name = $dish_name[$i];
+            $name = $dish_name[rand(0, count($dish_name))];
 
             $random_number = rand(1,6);
 
@@ -113,7 +153,7 @@ class DishSeeder extends Seeder
                 
                 'description' =>  fake()->text(50),
                 
-                'price' =>  fake()->randomFloat(2, 1, 50 ),
+                'price' =>  fake()->randomFloat(2, 1, 30),
  
                 'available' => fake()->boolean(),
 

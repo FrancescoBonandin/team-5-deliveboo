@@ -52,13 +52,35 @@ class RestaurantSeeder extends Seeder
 
                             'https://images.squarespace-cdn.com/content/v1/5a9ebf8d3e2d09baa871c6d3/1551116676498-J4ZO4NXTGKN6HCNCSDWT/ke17ZwdGBToddI8pDm48kLkXF2pIyv_F2eUT9F60jBl7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iyqMbMesKd95J-X4EagrgU9L3Sa3U8cogeb0tjXbfawd0urKshkc5MgdBeJmALQKw/_MG_0039.jpg?format=1500w',
 
+                            'https://www.bar.it/wp-content/uploads/2015/04/pub-bar.it_.jpg',
+
+                            'https://www.eazycityblog.com/wp-content/uploads/2019/02/ireland-2345992_1920-1170x780.jpg',
+
+                            'https://www.maiorestaurant.com/roma/wp-content/uploads/2023/07/MAIO-ROMA-019_WEB.jpg',
+
+                            'https://media.disneylandparis.com/d4th/it-it/images/n017807_2050jan01_blue-lagoon-restaurant_16-9_tcm764-158858.jpg?w=1960',
+
+                            'https://media.cntraveler.com/photos/5aba59a1f75ed97616cf1816/16:9/w_1920%2Cc_limit/Osteria-Chiana_Susan-Wright_2018__DSC1732.jpg',
+
+                            'https://media-cdn.tripadvisor.com/media/photo-s/23/9a/1f/2f/new-seafront-location.jpg',
+
+                            'https://www.gordonramsayrestaurants.com/assets/Uploads/_resampled/CroppedFocusedImage74046061-63-vb512415-maze-Grill-Park-Walk.jpg',
+
+                            'https://www.hazyviewcabanas.co.za/assets/img/facilities/restaurant/featured-image.webp',
+
+                            'https://lepetitrestaurantjaponais.com/wp-content/uploads/2023/01/image1-2-1.jpeg',
+
+                            'https://gdkfiles.visitdenmark.com/files/471/287899_Restaurant-domne---Foto-Restaurant-domne---1024x576---10.jpg?width=987',
+
+                            'https://www.hiddencitysecrets.com.au/wp-content/uploads/2022/10/Bobbie-Peels-Restaurants-North-Melbourne-Restaurant-Top-Birthday-Dinner-Best-After-Work-Drinks-Good-Date-Night-Cocktail-Pub-Special-Occasion-2.jpg',
+
         ];
 
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 30; $i++) { 
 
             $randomUser = User::all();
 
-            $random_img = $restaurant_img[$i];
+            $random_img = $restaurant_img[rand(0, count($restaurant_img))];
 
             if(isset($random_img)){
 
