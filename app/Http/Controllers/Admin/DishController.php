@@ -67,7 +67,7 @@ class DishController extends Controller
     {
         if($dish->restaurant->user_id != Auth::id())
         {
-            return back();
+            return abort(403,'Unauthorized');
         }
 
         return view('admin.dishes.show', compact('dish'));
@@ -80,7 +80,7 @@ class DishController extends Controller
     {
         if($dish->restaurant->user_id != Auth::id())
         {
-            return back();
+            return abort(403,'Unauthorized');
         }
 
         return view('admin.dishes.edit', compact('dish'));
@@ -93,7 +93,7 @@ class DishController extends Controller
     {
         if($dish->restaurant->user_id != Auth::id())
         {
-            return back();
+            return abort(403,'Unauthorized');;
         }
 
         $data=$request->validated();
@@ -134,7 +134,7 @@ class DishController extends Controller
 
         if($dish->restaurant->user_id != Auth::id())
         {
-            return back();
+            return abort(403,'Unauthorized');;
         }
         
         if ($dish->image) {
