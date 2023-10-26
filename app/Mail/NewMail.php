@@ -21,7 +21,7 @@ class NewMail extends Mailable
 
     public function __construct($newMessage)
     {
-        $this->$newMessage = $$newMessage;
+        $this->newMessage = $newMessage;
     }
 
     /**
@@ -40,7 +40,7 @@ class NewMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.new-mail',
+            view: 'emails.new-email',
         );
     }
 
