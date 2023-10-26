@@ -40,7 +40,7 @@ class ProfileController extends Controller
 
         if($request->user()->id != Auth::id())
         {
-            return back();
+            return abort(403,'Unauthorized');
         }
 
         $request->user()->fill($request->validated());
@@ -94,8 +94,7 @@ class ProfileController extends Controller
     {
         if($request->user()->id != Auth::id())
         {
-            return back();
-        }
+            return abort(403,'Unauthorized');        }
 
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],

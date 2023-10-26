@@ -18,7 +18,7 @@ class PasswordController extends Controller
 
         if($request->user()->id != Auth::id())
         {
-            return back();
+            return abort(403,'Unauthorized');;
         }
 
         $validated = $request->validateWithBag('updatePassword', [
