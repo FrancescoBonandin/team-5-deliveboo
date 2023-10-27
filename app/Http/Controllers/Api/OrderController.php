@@ -96,7 +96,7 @@ class OrderController extends Controller
         $newMessage = NewMessage::create(['name'=>$data['customer_name'],
         'last_name'=>$data['customer_last_name'], 'email'=>$data['customer_email'], 
         'message'=>'ciao ciao']);
-        Mail::to('boolean@careers.com')->send(new NewMail($newMessage));
+        Mail::to($newMessage->email)->send(new NewMail($newMessage));
     
 
         return response()->json([
