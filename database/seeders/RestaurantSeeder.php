@@ -62,7 +62,7 @@ class RestaurantSeeder extends Seeder
 
                             'https://media.cntraveler.com/photos/5aba59a1f75ed97616cf1816/16:9/w_1920%2Cc_limit/Osteria-Chiana_Susan-Wright_2018__DSC1732.jpg',
 
-                            'https://media-cdn.tripadvisor.com/media/photo-s/23/9a/1f/2f/new-seafront-location.jpg',
+                            // 'https://media-cdn.tripadvisor.com/media/photo-s/23/9a/1f/2f/new-seafront-location.jpg',
 
                             'https://www.gordonramsayrestaurants.com/assets/Uploads/_resampled/CroppedFocusedImage74046061-63-vb512415-maze-Grill-Park-Walk.jpg',
 
@@ -73,14 +73,15 @@ class RestaurantSeeder extends Seeder
                             'https://gdkfiles.visitdenmark.com/files/471/287899_Restaurant-domne---Foto-Restaurant-domne---1024x576---10.jpg?width=987',
 
                             'https://www.hiddencitysecrets.com.au/wp-content/uploads/2022/10/Bobbie-Peels-Restaurants-North-Melbourne-Restaurant-Top-Birthday-Dinner-Best-After-Work-Drinks-Good-Date-Night-Cocktail-Pub-Special-Occasion-2.jpg',
-
+                            
+                           
         ];
 
-        for ($i=0; $i < 30; $i++) { 
+        for ($i=0; $i < 20; $i++) { 
 
             $randomUser = User::all();
 
-            $random_img = $restaurant_img[rand(0, count($restaurant_img))];
+            $random_img = $restaurant_img[$i];
 
             if(isset($random_img)){
 
@@ -108,6 +109,9 @@ class RestaurantSeeder extends Seeder
                 'p_iva' => fake()->isbn10(),
                 
             ]);
+
+            sleep(1);
+
             
         }
 

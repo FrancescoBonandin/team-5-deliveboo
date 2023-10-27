@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
 
 
 
-        for ($i=0; $i < 30; $i++) { 
+        for ($i=0; $i < 20; $i++) { 
 
             User::create([
 
