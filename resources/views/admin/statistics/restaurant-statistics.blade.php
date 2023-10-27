@@ -1,16 +1,46 @@
 @extends('layouts.app')
 
-@section('page-title', 'Dishes')
+@section('page-title', 'Statistics')
 
 @section('main-content')
 
-<div class="w-100 position-relative ">
 
-    <div>
-      <canvas style="background-color:white" id="myChart"></canvas>
+
+    <div class="col-10">
+
+      <form action="{{ route('restaurant-statistics-search')}}" method="GET" enctype="multipart/form-data">
+        @csrf
+
+        <label for="year">
+
+          Choose the year:
+
+        </label>
+
+        <select name="year" id="year">
+          
+          @foreach ($years as $year)
+              
+            <option value="{{$year['year']}}">{{$year['year']}}</option>
+
+          @endforeach
+
+        </select>
+
+        <button type='submit'>
+          search
+        </button>
+      </form>
+      
+      <div>
+        <canvas style="background-color:white" id="myChart"></canvas>
+      </div>
+      
     </div>
+    
+    
 
-</div>
+ 
 
 <script>
 

@@ -42,6 +42,7 @@ Route::middleware('auth')
     Route::get('/dishes', [DishController::class,'returnView'])->name('dishes.view');
     Route::delete('/orders', [OrderController::class, 'destroy'])->name('orders');
     Route::get('/statistics', [RestaurantController::class, 'returnView'])->name('restaurant-statistics');
+    Route::get('/statistics/search', [RestaurantController::class, 'search'])->name('restaurant-statistics-search');
 });
 
 
