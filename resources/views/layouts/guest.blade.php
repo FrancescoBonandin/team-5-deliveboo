@@ -7,6 +7,8 @@
 
         <title>{{ config('app.name') }}</title>
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
         <link rel="shortcut icon" type="image/x-icon" href="{{Vite::asset('resources/img/favicon (1).ico')}}">
 
         <!-- Scripts -->
@@ -45,9 +47,15 @@
 
                     </button>
 
-                    <div class="collapse navbar-collapse" id="navbarText">
+                    <div class="collapse navbar-collapse  w-75 " id="navbarText">
 
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <ul class="navbar-nav me-auto d-flex justify-content-end mb-2 mb-lg-0 w-100">
+
+                            <li class="nav-item">
+
+                                 <a class="nav-link  deliveboo-primary-t-color" href="http://localhost:5176">Ordina dal tuo ristorante preferito <i class="fa-solid fa-utensils  "></i></a>
+
+                            </li>
 
                             @auth
 

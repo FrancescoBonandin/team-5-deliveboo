@@ -12,7 +12,7 @@
             <label class="mx-2" for="email">Email <span class="text-danger">*</span></label>
 
             @error('email')
-            <div class="alert alert-danger">
+            <div class="alert alert-danger mt-1">
                 {{$message}}
             </div>
             @enderror
@@ -27,7 +27,7 @@
             <label class="mx-2" for="password">Password <span class="text-danger">*</span> </label>
 
             @error('password')
-            <div class="alert alert-danger">
+            <div class="alert alert-danger mt-1">
                 {{$message}}
             </div>
             @enderror
@@ -45,9 +45,9 @@
 
         <div class="mt-4 d-flex justify-content-center">
 
-            <button class="btn btn-primary w-25 mx-2 d-block py-2 text-uppercase" type="submit">accedi</button>
+            <button class="btn btn-primary col-lg-3 col-xs-12 mx-2 d-block py-2 text-uppercase " type="submit">accedi</button>
 
-            <a class="btn btn-outline-warning py-2 mx-2  w-25 d-block text-uppercase text-decoration-none" href="{{ route('register') }}">registrati</a>
+            <a class="btn btn-outline-warning py-2 mx-2  col-xs-12 col-lg-3  d-block text-uppercase text-decoration-none" href="{{ route('register') }}">registrati</a>
 
         </div>
 

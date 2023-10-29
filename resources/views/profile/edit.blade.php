@@ -4,27 +4,32 @@
 
 @section('main-content')
     
-    <h2 class="">
-        {{ Auth()->User()->name }}
-    </h2>
-    
+    <div class=" w-100">  
 
-    <div class="py-12">
-        <div class=" mx-auto">
-            <div class="p-4 ">
-                <div class=" ">
-                    <form method="POST" action="{{ route('profile.update', ['profile'=>Auth()->user()]) }}" enctype='multipart/form-data' class="container d-flex w-700px justify-content-center flex-wrap light-bg-card p-2 m-2 custom-shadow">
+        <div class="btn btn-primary my-4">
+
+            <a class="text-reset text-decoration-none" href="{{route('dashboard')}}">indietro</a>
+
+        </div>
+
+        <div class="w-75 m-auto">
+
+            <div class="my-4">
+
+                <div class="  ">
+
+                    <form method="POST" action="{{ route('profile.update', ['profile'=>Auth()->user()]) }}" enctype='multipart/form-data' class=" d-flex w-100 m-auto justify-content-center flex-wrap light-bg-card p-2 m-2 custom-shadow">
 
                         @csrf
 
                         @Method('PUT')
                 
-                        <div class="p-2 col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex flex-column justify-content-between container-md">
+                        <div class="p-2 col-12 d-flex flex-column justify-content-between">
                 
                             <!-- Name -->
-                            <div class="form-floating">
+                            <div class="form-floating  w-100">
                 
-                                <input class="form-control rounded-pill px-3 deliveboo-primary-border @error('name') is-invalid @enderror" type="text" id="name" name="name" placeholder="nome" value="{{old('name',auth()->user()->name) }}" required maxlength='255'>
+                                <input class="form-control rounded-pill px-3 deliveboo-primary-border w-100 @error('name') is-invalid @enderror" type="text" id="name" name="name" placeholder="nome" value="{{old('name',auth()->user()->name) }}" required maxlength='255'>
                 
                                 <label class="form-label mx-2" for="name">Name</label>
 
@@ -39,7 +44,7 @@
                             <!-- Email Address -->
                             <div class="mt-2 form-floating">
                 
-                                <input class="form-control rounded-pill px-3 deliveboo-primary-border @error('email') is-invalid @enderror" type="email" id="email" name="email" placeholder="email" value="{{old('email', auth()->user()->email)}}" required maxlength='319'>
+                                <input class="form-control rounded-pill px-3 deliveboo-primary-border w-100 @error('email') is-invalid @enderror" type="email" id="email" name="email" placeholder="email" value="{{old('email', auth()->user()->email)}}" required maxlength='319'>
                 
                                 <label class="form-label mx-2" for="email">Email</label>
 
@@ -101,7 +106,7 @@
                         @if(auth()->user()->restaurant->image)
                             <div class=" ">  
                                @if (auth()->user()->restaurant->image)
-                                   <img class="img-fluid" src="{{asset('/storage/'.auth()->user()->restaurant->image)}}" alt="{{auth()->user()->restaurant->name}}" class="w-25">
+                                   <img class="img-fluid rounded" src="{{asset('/storage/'.auth()->user()->restaurant->image)}}" alt="{{auth()->user()->restaurant->name}}" class="w-25">
                                @endif
                                
                        
@@ -116,7 +121,7 @@
                             </div> 
                         @endif
                 
-                        <div class="p-2 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="p-2 col-12 col-xs-12">
                             
                             
                             {{-- restaurant image --}}
@@ -197,17 +202,22 @@
                         
                         </div>
 
-                        <button class="btn btn-primary w-100 py-2 my-2" type="submit">
+                        <div class="w-100 d-flex justify-content-center">
 
-                           Modifica
-        
-                        </button>
-                        
+                            <button class="btn btn-primary  py-2  " type="submit">
+
+                                Modifica
+             
+                             </button>
+
+                        </div>
+
                     </form>
                 </div>
             </div>
 
-            <section id="" class="my-5 ">
+            <section id="" class="my-5 m-auto ">
+
                 <div class="">
 
                    @if (session('status'))
@@ -216,15 +226,15 @@
                        </div>
                    @endif
 
-                    <form method="POST" action="{{ route('password.update') }}" class="container d-flex w-700px justify-content-center flex-wrap light-bg-card p-2 m-2 custom-shadow">
+                    <form method="POST" action="{{ route('password.update') }}" class="container d-flex w-100 m-auto justify-content-center flex-wrap light-bg-card p-2 m-2 custom-shadow">
                         @csrf
                         @method('PUT')
 
 
-                        <div>
+                        <div class="w-100 p-2">
                         
                             <!--Current Password -->
-                            <div class="mt-2 form-floating">
+                            <div class="mt-2  form-floating">
 
                                 <input class="form-control rounded-pill px-3 deliveboo-primary-border" type="password" id="current_password" name="current_password" placeholder="current password"  required minlength='8'>
 
@@ -250,11 +260,15 @@
 
                             </div>
 
-                            <button class="btn btn-primary w-100 py-2 my-2" type="submit">
+                            <div class="w-100 d-flex justify-content-center">
 
-                                Modifica Password
-             
-                             </button>
+                                <button class="btn btn-warning   py-2 mt-3 " type="submit">
+
+                                    Modifica Password
+                
+                                </button>
+
+                            </div> 
 
                         </div>
 
@@ -265,10 +279,14 @@
             <section id='deletion' class="my-5 ">
                 <div class=" ">
 
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                        Cancella account
-                    </button>
+                    <div class="w-100 d-flex justify-content-center">
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-danger mx-3 custom-shadow" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                            Cancella account
+                        </button>
+
+                    </div>
 
                     <!-- Modal -->
                     <div class="modal fade" id="deleteModal" tabindex="-1">

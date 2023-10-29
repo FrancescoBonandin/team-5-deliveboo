@@ -4,7 +4,7 @@
 
 @section('main-content')
 
-<div class="w-100"> 
+<div class="w-100 "> 
 
     <div class="btn btn-primary my-4">
 
@@ -16,27 +16,19 @@
         
     <div id="carouselExample" class="carousel slide light-bg-card p-2 mx-3 mb-4 mt-2 custom-shadow">
 
-        <div
-
         @if (count(Auth()->user()->restaurant->orders->toArray()) > 10)
 
-        class="counter text-bg-light counter-r"
+        <div class="counter text-bg-light counter-r"> {{count(Auth()->user()->restaurant->orders->toArray())}}</div> 
 
         @elseif(count(Auth()->user()->restaurant->orders->toArray()) < 5 )
 
-        class="counter text-bg-light"
+        <div class="counter text-bg-light">  {{count(Auth()->user()->restaurant->orders->toArray())}}</div>
 
         @else
 
-        class="counter text-bg-light counter-y"
+         <div class="counter text-bg-light counter-y">{{count(Auth()->user()->restaurant->orders->toArray())}}</div>
             
         @endif
-
-        >
-
-            {{count(Auth()->user()->restaurant->orders->toArray())}}
-
-        </div>
 
         <div class="carousel-inner">
 
@@ -53,7 +45,7 @@
 
                             <div class="my-1 mt-0 primary-bg-card p-2">
 
-                                <h3>nome</h3>
+                                <h3>Nome</h3>
 
                                 <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['name'] }}</span>
 
@@ -61,23 +53,23 @@
 
                             <div class="my-1 primary-bg-card p-2">
 
-                                <h3>cognome</h3>
+                                <h3>Cognome</h3>
 
                                 <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['last_name'] }}</span>
 
                             </div>
 
-                            <div class="my-1 primary-bg-card p-2">
+                            <div class="my-1 primary-bg-card p-2"> 
 
-                                <h3>indirizzo</h3>
+                                <h3>Indirizzo</h3>
 
-                                <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['address'] }}</span>
+                                <span class="fs-7">{{Auth()->user()->restaurant->orders->toArray()[$i]['address'] }}</span>
 
                             </div>
 
                             <div class="my-1 primary-bg-card p-2">
 
-                                <h3>telefono</h3>
+                                <h3>Telefono</h3>
 
                                 <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['phone_number'] }}</span>
 
@@ -95,7 +87,7 @@
 
                             <div class="my-1 primary-bg-card p-2">
 
-                                <h3>totale</h3>
+                                <h3>Totale</h3>
 
                                 <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['total_price'] }} &euro;</span>
 
@@ -121,7 +113,9 @@
                                     
                                     @endphp
 
-                                    <div class="w-100 primary-bg-card p-2 my-2 d-flex justify-content-center flex-wrap">
+                                    {{-- @dd($dish) --}}
+
+                                    <div class="w-100 primary-bg-card p-2 my-2 d-flex justify-content-center flex-wrap position-relative">
 
                                         <div class="counter-frame">
 
@@ -129,9 +123,15 @@
 
                                         </div>
 
-                                        <div class="col d-flex justify-content-around">
+                                        <div class="col col-xs-12 d-flex justify-content-around">
 
-                                            <h4 class="align-self-center m-2 text-capitalize">{{$dish['name']}}</h4>
+                                            <div class="align-self-center d-flex justify-content-between  flex-wrap">
+
+                                                <h4 class="m-2 text-capitalize align-self-center ">{{$dish['name']}}</h4>
+
+                                                <h4 class="m-2 text-capitalize aling-self-center text-danger"> <span class="fs-7 text-dark">x</span> {{$dish['pivot']['quantity']}}</h4>
+
+                                            </div>
 
                                             <h5 class="align-self-center m-2">{{$dish['price']}} &euro;</h5>
 
@@ -159,15 +159,15 @@
 
              {{-- ------------------------------------------ --}}
 
-            <div class="carousel-item">
+            <div class="carousel-item w-100">
 
-                <div class="d-flex justify-content-center flex-wrap">
+                <div class=" d-flex justify-content-center flex-wrap">
 
-                    <div class="p-2 col-lg-3 col-md-12 col-sm-12">
+                    <div class="p-2 col-lg-3 col-md-12 col-sm-12 col-xs-12">
 
                         <div class="my-1 mt-0 primary-bg-card p-2">
 
-                            <h3>nome</h3>
+                            <h3>Nome</h3>
 
                             <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['name'] }}</span>
 
@@ -175,7 +175,7 @@
 
                         <div class="my-1 primary-bg-card p-2">
 
-                            <h3>cognome</h3>
+                            <h3>Cognome</h3>
 
                             <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['last_name'] }}</span>
 
@@ -183,15 +183,15 @@
 
                         <div class="my-1 primary-bg-card p-2">
 
-                            <h3>indirizzo</h3>
+                            <h3>Indirizzo</h3>
 
-                            <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['address'] }}</span>
+                            <span class="fs-7">{{Auth()->user()->restaurant->orders->toArray()[$i]['address'] }}</span>
 
                         </div>
 
                         <div class="my-1 primary-bg-card p-2">
 
-                            <h3>telefono</h3>
+                            <h3>Telefono</h3>
 
                             <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['phone_number'] }}</span>
 
@@ -208,7 +208,7 @@
 
                         <div class="my-1 primary-bg-card p-2">
 
-                            <h3>totale</h3>
+                            <h3>Totale</h3>
 
                             <span>{{Auth()->user()->restaurant->orders->toArray()[$i]['total_price'] }} &euro;</span>
 
@@ -216,7 +216,7 @@
 
                     </div>
 
-                    <div class="col-lg-9 col-md-12 col-sm-12 display-foto-container">
+                    <div class="col-lg-9 col-md-12 col-sm-12 display-foto-container ">
 
                         @for ($index = 0; $index < count(Auth()->user()->restaurant->orders[$i]->dishes->toArray()); $index++) 
 
@@ -242,9 +242,15 @@
 
                                     </div>
 
-                                    <div class="col d-flex justify-content-around">
+                                    <div class="col col-xs-12 d-flex justify-content-around">
 
-                                        <h4 class="align-self-center m-2 text-capitalize">{{$dish['name']}}</h4>
+                                        <div class="align-self-center d-flex justify-content-between  flex-wrap">
+
+                                            <h4 class="m-2 text-capitalize align-self-center ">{{$dish['name']}}</h4>
+
+                                            <h4 class="m-2 text-capitalize aling-self-center text-danger"> <span class="fs-7 text-dark">x</span> {{$dish['pivot']['quantity']}}</h4>
+
+                                        </div>
 
                                         <h5 class="align-self-center m-2">{{$dish['price']}} &euro;</h5>
 

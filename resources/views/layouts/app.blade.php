@@ -53,14 +53,14 @@
 
                     <div class="collapse navbar-collapse justify-content-end" id="navbarText">
 
-                        <a class="btn btn-outline-warning me-4" href="{{ route('profile.edit', ['profile'=>auth()->user()]) }}">
+                        <a class="btn btn-outline-warning me-4 my-1" href="{{ route('profile.edit', ['profile'=>auth()->user()]) }}">
                             Edit
                         </a>
 
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <button type="submit" class="btn btn-outline-danger">
+                            <button type="submit" class="btn btn-outline-danger my-1">
                                 Log Out
                             </button>
 
