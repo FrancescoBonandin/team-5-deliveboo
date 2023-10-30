@@ -116,14 +116,14 @@
             <div class="form-check form-check-inline">
                 <label for="available  p-1">Disponibile</label>
                 <input class="form-check-input" type="radio" name="available"
-                id="available" value="1" @if(old('available',$dish->available) == $dish->available)
+                id="available" value="1" @if(old('available',$dish->available) == 1)
                 checked
                 @endif>
             </div>
             <div class="form-check form-check-inline ">
                 <label for="available"> Non Disponibile</label>
                 <input class="form-check-input" type="radio" name="available"
-                id="available" value="0" @if(old('available', $dish->available) == $dish->available)
+                id="available" value="0" @if(old('available', $dish->available) == 0)
                 checked
                 @endif>
             </div>

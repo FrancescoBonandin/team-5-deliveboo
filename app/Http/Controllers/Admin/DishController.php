@@ -57,7 +57,7 @@ class DishController extends Controller
             'restaurant_id'=>$request->user()->restaurant->id,
         ]);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dishes.view');
     }
 
     /**
@@ -123,7 +123,7 @@ class DishController extends Controller
             'image'=>$dishImage,
             'restaurant_id'=>$request->user()->restaurant->id,
         ]);
-        return redirect()->route('dashboard');
+        return redirect()->route('dishes.view');
     }
 
     /**
