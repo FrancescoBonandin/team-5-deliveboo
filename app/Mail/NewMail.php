@@ -30,7 +30,7 @@ class NewMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Ecco il tuo riepilogo ordine',
+            subject: 'Conferma ricezione ordine',
         );
     }
 
