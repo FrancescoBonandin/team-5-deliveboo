@@ -32,13 +32,13 @@
 
                 <div class="row">
 
-                    <div class="col-lg-4 col-md-3 col-sm-12 p-3">
+                    <div class="col-lg-4 col-md-3 col-sm-12 text-center align-self-center">
 
                         <h5 class="card-title text-capitalize"> {{$dish->name}}</h5>
         
                     </div>
         
-                    <div class="col-lg-4 col-md-3 col-sm-12 p-3 align-self-center ">
+                    <div class="col-lg-4 col-md-3 col-sm-12 p-3 align-self-center  text-center">
 
                         <h6 class="card-title text-uppercase">descrizione :</h6>
         
@@ -46,9 +46,9 @@
         
                     </div>
         
-                    <div class="col-lg-4 ms-md-auto col-lg-2 col-md-4 col-sm">
+                    <div class="col-lg-4 col-md-4 col-sm mx-auto ">
         
-                        <img src="{{asset('/storage/'.$dish->image)}}" alt="" class="rounded w-100">
+                        <img src="{{asset('/storage/'.$dish->image)}}" alt="" class=" w-100 foto-frame ">
         
                     </div>
 
@@ -118,15 +118,15 @@
 
                                     @method('Delete')
 
-                                        <div class="modal-footer">
+                                        <div class="modal-footer justify-content-center ">
 
-                                            <button type='submit' class="col-3 btn btn-danger">
+                                            <button type='submit' class="col-6 btn btn-danger">
 
                                                 Cancella
 
                                             </button>
 
-                                            <button type="button" class="col-3 btn btn-success" data-bs-dismiss="modal">
+                                            <button type="button" class="col-6 btn btn-success" data-bs-dismiss="modal">
 
                                                 Annulla
 

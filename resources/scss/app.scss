@@ -48,6 +48,18 @@
 
 }
 
+.h-100px{
+
+    height: 6.25rem
+
+}
+
+.h-chart{
+
+    min-height: calc(100vh - 225px)
+
+}
+
 .foto-frame{
 
     height: 9.375rem;
@@ -243,7 +255,7 @@
 
     font-weight: 700;
 
-    border: .1875rem solid #4caf50;
+    border: .25rem solid #4caf50;
 
     background-color: white;
 
@@ -253,13 +265,13 @@
 
 .counter-y{
 
-    border: rgb(255, 238, 0);
+    border: .25rem solid rgb(255, 213, 0);
 
 }
 
 .counter-r{
 
-    border: rgb(255, 0, 0);
+    border: .25rem solid rgb(255, 0, 0);
 
 }
 
