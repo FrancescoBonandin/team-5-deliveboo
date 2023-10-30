@@ -23,7 +23,7 @@ return new class extends Migration
 
             ->onUpdate('cascade')
 
-            ->onDelete('no action');
+            ->onDelete('cascade');
 
             $table ->unsignedBigInteger('order_id');
 
@@ -35,7 +35,7 @@ return new class extends Migration
 
             ->onUpdate('cascade')
 
-            ->onDelete('no action');
+            ->onDelete('cascade');
 
             $table ->unsignedTinyInteger('quantity')->default(0);
 
