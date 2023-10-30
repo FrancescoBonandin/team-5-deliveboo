@@ -48,7 +48,12 @@
         
                     <div class="col-lg-4 col-md-4 col-sm mx-auto ">
         
-                        <img src="{{asset('/storage/'.$dish->image)}}" alt="" class=" w-100 foto-frame ">
+                        @if($dish->image)
+                            <img src="{{asset('/storage/'.$dish->image)}}" alt="{{$dish->name}}" class="w-100 foto-frame rounded">
+                            
+                        @else
+                            <h6 class="">Immagine non disponibile</h6>
+                        @endif
         
                     </div>
 
@@ -74,11 +79,11 @@
 
                     <div class="m-2 align-self-center justify-self-center">
 
-                        <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$dish->id}}">
                             Cancella
                         </button>
 
-                        <div class="modal fade" id="deleteModal" tabindex="-1">
+                        <div class="modal fade" id="deleteModal-{{$dish->id}}" tabindex="-1">
 
                             <div class="modal-dialog">
 
@@ -88,7 +93,7 @@
 
                                         <h5 class="modal-title"> Sei sicuro? </h5>
 
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
                                     </div>
 
@@ -112,11 +117,11 @@
 
                                     </div>
 
-                                    <form  action="{{route('dishes.destroy',['dish'=>$dish->id])}}" method="POST">
+                                    <form  action="{{route('dishes.destroy',['dish'=>$dish])}}" method="POST">
 
-                                    @csrf
+                                        @csrf
 
-                                    @method('Delete')
+                                        @method('Delete')
 
                                         <div class="modal-footer justify-content-center ">
 
