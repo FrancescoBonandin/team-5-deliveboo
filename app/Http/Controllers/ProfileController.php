@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Category;
 
+use Illuminate\Support\Facades\Storage;
 class ProfileController extends Controller
 {
     /**
@@ -16,8 +18,17 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $categories=Category::all();
+
+        if($request->user()->id != Auth::id())
+        {
+            return view('profile.edit',['user' => Auth::user(),'categories'=>$categories,]);
+        }
+
+
         return view('profile.edit', [
             'user' => $request->user(),
+            'categories'=>$categories,
         ]);
     }
 
@@ -26,15 +37,54 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+
+        if($request->user()->id != Auth::id())
+        {
+            return abort(403,'Unauthorized');
+        }
+
         $request->user()->fill($request->validated());
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        // if ($request->user()->isDirty('email')) {
+        //     $request->user()->email_verified_at = null;
+        // }
+        $restaurantImage=null;
+        
+        if (isset($request->validated()['image'])) {
+            if (auth()->user()->restaurant->image) {
+                Storage::delete(auth()->user()->restaurant->image);
+            }
+
+            $restaurantImage = Storage::put('uploads/images', $request->validated()['image']);
         }
+        else if (isset($request->validated()['remove_image'])) {
+            if (auth()->user()->restaurant->image) {
+                Storage::delete(auth()->user()->restaurant->image);
+            }
+
+            $restaurantImage = null;
+        }
+
+        $request->user()->restaurant->update([
+
+            'restaurant_name'=>$request->restaurant_name,
+            'address'=> $request->address,
+            'image'=>$restaurantImage,
+            'p_iva'=>$request->p_iva,
+        ]
+        );
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        if (isset($request['categories'])) {
+            $request->user()->restaurant->categories()->sync($request['categories']);
+        }
+        else {
+            $request->user()->restaurant->categories()->detach();
+        }
+
+        return redirect()->back();
+        // ->with('status', 'profile-updated');
     }
 
     /**
@@ -42,6 +92,10 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        if($request->user()->id != Auth::id())
+        {
+            return abort(403,'Unauthorized');        }
+
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);

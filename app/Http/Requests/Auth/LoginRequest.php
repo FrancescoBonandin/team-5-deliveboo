@@ -32,6 +32,14 @@ class LoginRequest extends FormRequest
         ];
     }
 
+    public function messages(): array
+    {
+        return [
+            'email' => 'Il campo è obbligatorio e deve essere una email valida',
+            'password' => 'La password deve essere valida',
+        ];
+    }
+
     /**
      * Attempt to authenticate the request's credentials.
      *
@@ -45,7 +53,8 @@ class LoginRequest extends FormRequest
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'email' => 'Il campo è obbligatorio e deve essere una email valida',
+                'password'=>'La password deve essere valida',
             ]);
         }
 
